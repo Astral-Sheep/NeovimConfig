@@ -1,0 +1,40 @@
+{
+	//Explorer
+	"explorer.width": 30,
+	"explorer.icon.enableNerdfont": true,
+	//Coc
+	"coc.preferences.formatOnType": true,
+	"coc.preferences.formatOnSaveFiletypes": [
+		"c",
+		"cpp",
+		"cs",
+		"json",
+		"lua",
+		"rs"
+	],
+	//C++ (clangd)
+	"clangd.enabled": true,
+	"clangd.disableCompletion": false,
+	"clangd.disableDiagnostics": false,
+	"clangd.disableSnippetCompletion": false,
+	//Json (json)
+	"json.enable": true,
+	"json.format.enable": true,
+	//Rust (rust-analyzer)
+	"rust-analyzer.enable": true,
+	"rust-analyzer.terminal.startinsert": true,
+	"rust-analyzer.inlayHints.enable": false,
+	"rust-analyzer.completion.autoimport.enable": true,
+	"rust-analyzer.completion.autoself.enable": true,
+	"rust-analyzer.completion.callable.snippets": "fill_arguments",
+	"rust-analyzer.completion.privateEditable.enable": true,
+	"rust-analyzer.highlightRelated.breakPoints.enable": true,
+	"rust-analyzer.highlightRelated.exitPoints.enable": true,
+	"rust-analyzer.highlightRelated.references.enable": true,
+	"rust-analyzer.highlightRelated.yieldPoints.enable": false,
+	"rust-analyzer.hover.documentation.enable": true,
+	"rust-analyzer.hover.links.enable": true,
+	"rust-analyzer.inlayHints.closingBraceHints.enable": true,
+	"rust-analyzer.inlayHints.closingBraceHints.minLines": 0,
+	"rust-analyzer.signatureInfo.documentation.enable": true
+}
