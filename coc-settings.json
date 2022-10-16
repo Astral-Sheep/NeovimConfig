@@ -10,7 +10,9 @@
 		"cs",
 		"json",
 		"lua",
-		"rs"
+		"rs",
+		"hxml",
+		"py"
 	],
 	//C++ (clangd)
 	"clangd.enabled": true,
@@ -36,5 +38,8 @@
 	"rust-analyzer.hover.links.enable": true,
 	"rust-analyzer.inlayHints.closingBraceHints.enable": true,
 	"rust-analyzer.inlayHints.closingBraceHints.minLines": 0,
-	"rust-analyzer.signatureInfo.documentation.enable": true
+	"rust-analyzer.signatureInfo.documentation.enable": true,
+	//Python (pylsp)
+  "pylsp.enable": true,
+  "clangd.path": "~\\AppData\\Local\\coc\\extensions\\coc-clangd-data\\install\\15.0.1\\clangd_15.0.1\\bin\\clangd.exe"
 }
