@@ -1,4 +1,4 @@
-This is my neovim configuration.
+This is my neovim configuration for windows 10.
 
 Neovim version: 0.7.2
 
