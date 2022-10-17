@@ -1400,6 +1400,9 @@ hi! link jsonBraces GruvboxFg1
 hi! link jsonString GruvboxFg1
 
 " }}}
+" C++: {{{
+
+" }}}
 " Rust: {{{
 
 " }}}

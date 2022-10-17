@@ -19,13 +19,14 @@
 	"clangd.disableCompletion": false,
 	"clangd.disableDiagnostics": false,
 	"clangd.disableSnippetCompletion": false,
+	"clangd.path": "~\\AppData\\Local\\coc\\extensions\\coc-clangd-data\\install\\15.0.1\\clangd_15.0.1\\bin\\clangd.exe",
 	//Json (json)
 	"json.enable": true,
 	"json.format.enable": true,
 	//Rust (rust-analyzer)
 	"rust-analyzer.enable": true,
 	"rust-analyzer.terminal.startinsert": true,
-	"rust-analyzer.inlayHints.enable": false,
+	//"rust-analyzer.inlayHints.enable": false,
 	"rust-analyzer.completion.autoimport.enable": true,
 	"rust-analyzer.completion.autoself.enable": true,
 	"rust-analyzer.completion.callable.snippets": "fill_arguments",
@@ -36,10 +37,21 @@
 	"rust-analyzer.highlightRelated.yieldPoints.enable": false,
 	"rust-analyzer.hover.documentation.enable": true,
 	"rust-analyzer.hover.links.enable": true,
-	"rust-analyzer.inlayHints.closingBraceHints.enable": true,
+	"rust-analyzer.inlayHints.maxLength": 1,
+	"rust-analyzer.inlayHints.reborrowHints.enable": "never",
+	"rust-analyzer.inlayHints.typeHints.enable": false,
+	"rust-analyzer.inlayHints.chainingHints.enable": false,
+	"rust-analyzer.inlayHints.lifetimeElisionHints.enable": "never",
+	"rust-analyzer.inlayHints.parameterHints.enable": false,
+	"rust-analyzer.inlayHints.closureReturnTypeHints.enable": "never",
+	"rust-analyzer.inlayHints.bindingModeHints.enable": false,
+	"rust-analyzer.inlayHints.typeHints.hideNamedConstructor": true,
+	"rust-analyzer.inlayHints.typeHints.hideClosureInitialization": true,
+	"rust-analyzer.inlayHints.renderColons": false,
+	"rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": false,
+	"rust-analyzer.inlayHints.closingBraceHints.enable": false,
 	"rust-analyzer.inlayHints.closingBraceHints.minLines": 0,
 	"rust-analyzer.signatureInfo.documentation.enable": true,
 	//Python (pylsp)
-  "pylsp.enable": true,
-  "clangd.path": "~\\AppData\\Local\\coc\\extensions\\coc-clangd-data\\install\\15.0.1\\clangd_15.0.1\\bin\\clangd.exe"
+	"pylsp.enable": true
 }
