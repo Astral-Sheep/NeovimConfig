@@ -17,10 +17,10 @@ map.set('n', '<C-S-Down>', ':resize +2<CR>:<BS>', { desc = "Increase tab vertica
 map.set('n', '<C-S-Left>', ':vertical resize +2<CR>:<BS>', { desc = "Increase tab horizontal size" })
 map.set('n', '<C-S-Right>', ':vertical resize -2<CR>:<BS>', { desc = "Decrease tab horizontal size" })
 
-map.set('n', '<C-Left>', '<C-w>h')
-map.set('n', '<C-Right>', '<C-w>l')
-map.set('n', '<C-Up>', '<C-w>k')
-map.set('n', '<C-Down>', '<C-w>j')
+map.set('n', '<C-Left>', '<C-w>h', { desc = "Go to left tab" })
+map.set('n', '<C-Right>', '<C-w>l', { desc = "Go to right tab" })
+map.set('n', '<C-Up>', '<C-w>k', { desc = "Go to top tab" })
+map.set('n', '<C-Down>', '<C-w>j', { desc = "Go to bottom tab" })
 
 map.set('n', '<C-F4>', ':bdelete<CR>:<BS>', { desc = "Close current buffer" })
 map.set('n', '<TAB>', ':bnext<CR>:<BS>', { desc = "Goes to the next buffer" })
