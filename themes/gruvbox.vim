@@ -595,7 +595,7 @@ hi! link Keyword GruvboxRed
 " Variable name
 hi! link Identifier GruvboxBlue
 " Function name
-hi! link Function GruvboxGreenBold
+hi! link Function GruvboxBlueBold
 
 " Generic preprocessor
 hi! link PreProc GruvboxAqua
@@ -1398,12 +1398,6 @@ hi! link jsonKeyword GruvboxGreen
 hi! link jsonQuote GruvboxGreen
 hi! link jsonBraces GruvboxFg1
 hi! link jsonString GruvboxFg1
-
-" }}}
-" C++: {{{
-
-" }}}
-" Rust: {{{
 
 " }}}
 

@@ -1,4 +1,4 @@
-noremap <C-s> :w<CR>
+noremap <C-s> :up<CR>
 noremap <C-F1> :q<CR>
 noremap <C-S-F1> :q!<CR>
 

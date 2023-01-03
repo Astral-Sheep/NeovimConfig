@@ -10,4 +10,7 @@ call plug#begin('~/AppData/Local/nvim/autoload/plugged')
 	Plug 'https://github.com/airblade/vim-rooter.git'
 	Plug 'https://github.com/mhinz/vim-startify.git'
 	Plug 'https://github.com/mhinz/vim-signify.git'
+	Plug 'https://github.com/tikhomirov/vim-glsl.git'
+	Plug 'https://github.com/tpope/vim-commentary.git'
+	Plug 'https://github.com/zefei/vim-colortuner.git'
 call plug#end()

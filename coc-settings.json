@@ -14,12 +14,6 @@
 		"hxml",
 		"py"
 	],
-	//C++ (clangd)
-	"clangd.enabled": true,
-	"clangd.disableCompletion": false,
-	"clangd.disableDiagnostics": false,
-	"clangd.disableSnippetCompletion": false,
-	"clangd.path": "~\\AppData\\Local\\coc\\extensions\\coc-clangd-data\\install\\15.0.1\\clangd_15.0.1\\bin\\clangd.exe",
 	//Json (json)
 	"json.enable": true,
 	"json.format.enable": true,
@@ -52,6 +46,10 @@
 	"rust-analyzer.inlayHints.closingBraceHints.enable": false,
 	"rust-analyzer.inlayHints.closingBraceHints.minLines": 0,
 	"rust-analyzer.signatureInfo.documentation.enable": true,
+	"rust-analyzer.procMacro.attributes.enable": true,
+	"rust-analyzer.diagnostics.disabled": [
+		"unresolved-proc-macro"
+	],
 	//Python (pylsp)
 	"pylsp.enable": true
 }
