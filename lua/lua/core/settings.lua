@@ -4,7 +4,7 @@ vim.g.maplocalleader = ' '
 local set = vim.opt
 
 set.hidden=true								-- Required to keep multiple buffers open multiple buffers
-set.wrap=false								-- Display long lines as just one line
+set.wrap=true								-- Display long lines as just one line
 set.encoding="utf-8"						-- The encoding displayed
 set.pumheight=10							-- Makes popup menu smaller
 set.fileencoding="utf-8"					-- The encoding written to file
@@ -27,7 +27,7 @@ set.tabstop=4								-- Change the size of a tab character to x spaces
 set.laststatus=0							-- Always display the status line
 set.number=true								-- Line numbers
 set.cursorline=true							-- Enable highlighting of the current line
-set.background="dark"						-- Tell NeoVim what the background color looks like
+-- set.background="dark"					-- Tell NeoVim what the background color looks like
 set.showtabline=2							-- Always show tabs
 set.showmode=false							-- We don't need to see things like -- INSERT -- anymore
 set.updatetime=300							-- Faster completion
