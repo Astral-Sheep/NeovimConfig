@@ -1,12 +1,16 @@
 local servers = {
 	'arduino_language_server',	-- Arduino
+	'asm_lsp',					-- Assembly
 	'clangd',					-- C/C++
 	'omnisharp',				-- C#
 	'cssls',					-- CSS
+	-- 'glslls',				-- GLSL
+	'haxe_language_server',		-- Haxe
 	'html',						-- HTML
 	'jsonls',					-- JSON
 	'tsserver',					-- JavaScript/TypeScript
-	'sumneko_lua',				-- Lua
+	'lua_ls',					-- Lua
+	'powershell_es',			-- Powershell
 	'pylsp',					-- Python
 	'rust_analyzer',			-- Rust
 	'vimls',					-- VimScript
@@ -29,7 +33,6 @@ require('mason-lspconfig').setup({
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
 local lsp_config = require('lspconfig')
 
 for _, lsp in pairs(servers) do

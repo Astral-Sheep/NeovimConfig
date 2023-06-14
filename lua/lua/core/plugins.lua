@@ -15,18 +15,27 @@ return require('packer').startup(function(use)
 	-- Packer
 	use 'wbthomason/packer.nvim'
 
-	-- Syntax highlighting
+	-- Theme & Syntax highlighting
 	use 'morhetz/gruvbox'
+	use 'joshdick/onedark.vim'
+	use {
+		'briones-gabriel/darcula-solid.nvim',
+		requires = 'rktjmp/lush.nvim'
+	}
+	use 'doums/darcula'
 	use 'nvim-treesitter/nvim-treesitter'
 
 	-- File explorer
 	use 'nvim-tree/nvim-tree.lua'
-	use 'nvim-tree/nvim-web-devicons'
+	use {
+		'nvim-tree/nvim-web-devicons',
+	}
 	use {
 		'nvim-telescope/telescope.nvim',
 		tag = '0.1.0',
 		requires = { 'nvim-lua/plenary.nvim' }
 	}
+	use 'stevearc/aerial.nvim'
 
 	-- Status line
 	use 'nvim-lualine/lualine.nvim'

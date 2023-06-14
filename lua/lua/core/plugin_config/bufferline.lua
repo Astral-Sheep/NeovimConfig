@@ -40,7 +40,7 @@ require('bufferline').setup {
 		color_icons = true,
 		show_buffer_icons = true,
 		show_buffer_close_icons = true,
-		show_buffer_default_icon = true,
+		get_element_icon = true,
 		show_close_icon = false,
 		show_tab_indicators = true,
 		show_duplicate_prefix = true,
