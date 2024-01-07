@@ -2,8 +2,8 @@
 
 ## Made for:
 
-Platform: Window 10
+Windows 10
 
-## Path to install on windows:
+## Default path to install on windows:
 
 C:\Users\username\AppData\Local\nvim

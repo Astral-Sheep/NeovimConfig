@@ -94,6 +94,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\thoma\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["cmp-path"] = {
+    loaded = true,
+    path = "C:\\Users\\thoma\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\cmp-path",
+    url = "https://github.com/hrsh7th/cmp-path"
+  },
   darcula = {
     loaded = true,
     path = "C:\\Users\\thoma\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\darcula",

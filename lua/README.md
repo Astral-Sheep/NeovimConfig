@@ -2,7 +2,7 @@
 
 ## Made for:
 
-Neovim version: 0.9.0
+Neovim version: 0.9.5
 
 ## Installation Guide:
 
@@ -108,7 +108,7 @@ Normal mode:
 
 Normal mode:
 
-- Ctrl+M (\<cmd>AerialToggle!\<CR>) -> Toggle code outline window
+- Ctrl+M/Enter (\<cmd>AerialToggle!\<CR>) -> Toggle code outline window
 
 - , (\<cmd>AerialPrev\<CR>) -> Go to the previous symbol
 

@@ -32,7 +32,7 @@ return require('packer').startup(function(use)
 	}
 	use {
 		'nvim-telescope/telescope.nvim',
-		tag = '0.1.0',
+		branch = '0.1.x',
 		requires = { 'nvim-lua/plenary.nvim' }
 	}
 	use 'stevearc/aerial.nvim'
@@ -52,20 +52,21 @@ return require('packer').startup(function(use)
 		requires = {
 			'hrsh7th/vim-vsnip',
 			'hrsh7th/cmp-nvim-lsp',
-			'hrsh7th/cmp-buffer'
+			'hrsh7th/cmp-buffer',
+			'hrsh7th/cmp-path',
 		}
 	}
 
 	-- Miscellaneous
-	use 'windwp/nvim-autopairs'
-	use 'airblade/vim-rooter'
-	use 'mhinz/vim-startify'
-	use 'mhinz/vim-signify'
-	use 'tpope/vim-surround'
-	use 'tpope/vim-commentary'
-	use 'tpope/vim-fugitive'
-	use 'ntpeters/vim-better-whitespace'
-	use 'easymotion/vim-easymotion'
+	use 'windwp/nvim-autopairs' 		-- Autocompletion for parenthesis, brackets...
+	use 'airblade/vim-rooter' 			-- Set root directory of opened project
+	use 'mhinz/vim-startify'			-- Start screen
+	use 'mhinz/vim-signify'				-- Show modified lined in file managed by a version control system (VCS)
+	use 'tpope/vim-surround'			-- Easy replacement of parentheses, brackets, quotes, ect by another surrounding pair of characters
+	use 'tpope/vim-commentary'			-- Comment code easily
+	use 'tpope/vim-fugitive'			-- Git commands
+	use 'ntpeters/vim-better-whitespace'-- Highlight trailing whitespaces
+	use 'easymotion/vim-easymotion'		-- Motion bindings improvements
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	if packer_bootstrap then

@@ -1,7 +1,7 @@
 local custom = {
 	['c'] = { 'gruvbox', 'dark' },
 	['cpp'] = { 'gruvbox', 'dark' },
-	['cs'] = { 'darcula-solid', 'dark' },
+	['cs'] = { 'onedark', 'dark' },
 	['rust'] = { 'onedark', 'dark' },
 }
 local default_theme = { 'onedark', 'dark' }

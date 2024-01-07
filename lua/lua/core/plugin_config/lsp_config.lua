@@ -1,18 +1,22 @@
 local servers = {
 	'arduino_language_server',	-- Arduino
 	'asm_lsp',					-- Assembly
+	'bashls',					-- Bash
 	'clangd',					-- C/C++
-	'omnisharp',				-- C#
+	'cmake',					-- CMake
+	'csharp_ls',				-- C#
 	'cssls',					-- CSS
-	-- 'glslls',				-- GLSL
+	-- 'gdscript',					-- GDScript
+	-- 'glslls',					-- GLSL
 	'haxe_language_server',		-- Haxe
 	'html',						-- HTML
+	-- 'java_language_server',		-- Java
 	'jsonls',					-- JSON
-	'tsserver',					-- JavaScript/TypeScript
 	'lua_ls',					-- Lua
 	'powershell_es',			-- Powershell
 	'pylsp',					-- Python
 	'rust_analyzer',			-- Rust
+	'tsserver',					-- JavaScript/TypeScript
 	'vimls',					-- VimScript
 	'yamlls',					-- YAML
 }
