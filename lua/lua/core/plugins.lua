@@ -67,6 +67,10 @@ return require('packer').startup(function(use)
 	use 'tpope/vim-fugitive'			-- Git commands
 	use 'ntpeters/vim-better-whitespace'-- Highlight trailing whitespaces
 	use 'easymotion/vim-easymotion'		-- Motion bindings improvements
+	use {
+		'iamcco/markdown-preview.nvim',
+		run = function() vim.fn["mkdp#util#install"]() end,
+	} -- Markdown preview
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	if packer_bootstrap then
