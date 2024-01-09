@@ -1,6 +1,7 @@
 local custom = {
 	['c'] = { 'gruvbox', 'dark' },
 	['cpp'] = { 'gruvbox', 'dark' },
+	['cmake'] = { 'gruvbox', 'dark' },
 	['cs'] = { 'onedark', 'dark' },
 	['rust'] = { 'onedark', 'dark' },
 }
