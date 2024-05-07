@@ -10,7 +10,7 @@ require('bufferline').setup {
 			icon = "▎",
 			style = "icon"
 		},
-		buffer_close_icon = "",
+		buffer_close_icon = "",
 		modified_icon = "●",
 		close_icon = "",
 		left_trunk_marker = "",
@@ -53,6 +53,7 @@ require('bufferline').setup {
 			delay = 200,
 			reveal = { "close" }
 		},
-		sort_by = "insert_after_current"
+		sort_by = "insert_at_end"
 	}
 }
+

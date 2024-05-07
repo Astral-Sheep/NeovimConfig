@@ -22,13 +22,15 @@ local servers = {
 }
 
 local on_attach = function(_, _)
-	vim.keymap.set('n', '<c-r><c-r>', vim.lsp.buf.rename, {})
-	vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {})
+	local map = vim.keymap
+	local lsp = vim.lsp
+	map.set('n', '<c-r><c-r>', lsp.buf.rename, {})
+	map.set('n', '<leader>ca', lsp.buf.code_action, {})
 
-	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
-	vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, {})
-	vim.keymap.set('n', 'gh', vim.lsp.buf.hover, {})
+	map.set('n', 'gd', lsp.buf.definition, {})
+	map.set('n', 'gi', lsp.buf.implementation, {})
+	map.set('n', 'gr', require('telescope.builtin').lsp_references, {})
+	map.set('n', 'gh', lsp.buf.hover, {})
 end
 
 require('mason').setup()

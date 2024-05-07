@@ -8,8 +8,8 @@ map.set('n', '<C-S-F1>', ':q!<CR>', { desc = "Close current window without savin
 
 map.set('n', '<C-z>', 'u', { desc = "Undo" })
 map.set('n', '<C-y>', '<C-r>', { desc = "Redo" })
-map.set('n', '<C-s>', ':up<CR>', { desc = "Save" })
-map.set('n', '<S-s>', ':up!<CR>', { desc = "Overwrite file" })
+map.set('n', '<C-s>', ':w<CR>', { desc = "Save" })
+map.set('n', '<S-s>', ':w!<CR>', { desc = "Overwrite file" })
 map.set('i', 'C-z', '<u>', { desc = "Undo" })
 map.set('i', 'C-y', '<C-r>', { desc = "Redo" })
 
