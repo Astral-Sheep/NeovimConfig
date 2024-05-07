@@ -3,6 +3,7 @@
 ## Made for:
 
 OS: Windows 10
+
 Neovim version: 0.9.5
 
 ## Default path to install on windows:
