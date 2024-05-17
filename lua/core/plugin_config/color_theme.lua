@@ -67,3 +67,8 @@ vim.cmd.colorscheme(scheme)
 vim.opt.background = bg
 background = bg
 
+vim.api.nvim_create_autocmd({ 'FileType', 'BufWinEnter' }, {
+	nested = true,
+	callback = UpdateTheme
+})
+

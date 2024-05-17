@@ -59,10 +59,3 @@ require('lualine').setup {
 	},
 }
 
-function RefreshLualine()
-	require('lualine').refresh({
-		scope = 'window', -- scope of refresh all/tabpage/window
-		place = { 'statusline', 'winbar', 'tabline' }, -- lualine segment to refresh
-	})
-end
-

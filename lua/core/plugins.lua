@@ -11,6 +11,14 @@ end
 
 local packer_bootstrap = ensure_packer()
 
+-- TODO: this is something to do
+-- HACK: this is a hack
+-- NOTE: this is a note
+-- PERF: this is a perf issue
+-- WARN: this is a warning
+-- FIX: this is an issue to fix
+-- TEST: This is a test
+
 return require('packer').startup(function(use)
 	-- Packer
 	use 'wbthomason/packer.nvim'
@@ -24,6 +32,10 @@ return require('packer').startup(function(use)
 	}
 	use 'doums/darcula'
 	use 'nvim-treesitter/nvim-treesitter'
+	use {
+		'folke/todo-comments.nvim',
+		requires = { 'nvim-lua/plenary.nvim' }
+	}
 
 	-- File explorer
 	use 'nvim-tree/nvim-tree.lua'
@@ -57,6 +69,12 @@ return require('packer').startup(function(use)
 		}
 	}
 
+	-- File specific
+	use {
+		'iamcco/markdown-preview.nvim',
+		run = function() vim.fn["mkdp#util#install"]() end,
+	} 									-- Markdown preview
+
 	-- Miscellaneous
 	use 'windwp/nvim-autopairs' 		-- Autocompletion for parenthesis, brackets...
 	use 'airblade/vim-rooter' 			-- Set root directory of opened project
@@ -67,10 +85,6 @@ return require('packer').startup(function(use)
 	use 'tpope/vim-fugitive'			-- Git commands
 	use 'ntpeters/vim-better-whitespace'-- Highlight trailing whitespaces
 	use 'easymotion/vim-easymotion'		-- Motion bindings improvements
-	use {
-		'iamcco/markdown-preview.nvim',
-		run = function() vim.fn["mkdp#util#install"]() end,
-	} -- Markdown preview
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	if packer_bootstrap then
