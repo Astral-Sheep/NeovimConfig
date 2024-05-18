@@ -28,7 +28,7 @@ end
 
 local background
 
-function UpdateTheme()
+local function update_theme()
 	local filetype = get_filetype()
 
 	if (filetype == nil or filetype == "")
@@ -69,6 +69,6 @@ background = bg
 
 vim.api.nvim_create_autocmd({ 'FileType', 'BufWinEnter' }, {
 	nested = true,
-	callback = UpdateTheme
+	callback = update_theme
 })
 
