@@ -64,3 +64,5 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 	callback = refresh_treesitter
 })
 
+refresh_treesitter()
+
