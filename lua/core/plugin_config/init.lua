@@ -6,6 +6,8 @@ require('core.plugin_config.todo-comments')
 require('nvim-autopairs').setup {}
 require('core.plugin_config.nvim-lspconfig')
 require('core.plugin_config.nvim-cmp')
+-- Debugging
+require('core.plugin_config.nvim-dap')
 -- Status lines
 require('core.plugin_config.lualine')
 require('core.plugin_config.bufferline')

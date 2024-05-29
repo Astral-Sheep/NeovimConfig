@@ -11,14 +11,6 @@ end
 
 local packer_bootstrap = ensure_packer()
 
--- TODO: this is something to do
--- HACK: this is a hack
--- NOTE: this is a note
--- PERF: this is a perf issue
--- WARN: this is a warning
--- FIX: this is an issue to fix
--- TEST: This is a test
-
 return require('packer').startup(function(use)
 	-- Packer
 	use 'wbthomason/packer.nvim'
@@ -66,6 +58,15 @@ return require('packer').startup(function(use)
 			'hrsh7th/cmp-nvim-lsp',
 			'hrsh7th/cmp-buffer',
 			'hrsh7th/cmp-path',
+		}
+	}
+
+	-- Debugging
+	use {
+		'mfussenegger/nvim-dap',
+		requires = {
+			"rcarriga/nvim-dap-ui",
+			"nvim-neotest/nvim-nio",
 		}
 	}
 
