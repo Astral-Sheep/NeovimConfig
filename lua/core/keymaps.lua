@@ -4,7 +4,7 @@ vim.g.maplocalleader = ' '
 local map = vim.keymap
 
 map.set('n', '<C-F1>', ':q<CR>', { desc = "Close current window" })
-map.set('n', '<C-S-F1>', ':q!<CR>', { desc = "Close current window without saving" })
+map.set('n', '<CS-F1>', ':q!<CR>', { desc = "Close current window without saving" })
 
 map.set('n', '<C-z>', 'u', { desc = "Undo" })
 map.set('n', '<C-y>', '<C-r>', { desc = "Redo" })

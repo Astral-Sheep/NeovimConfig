@@ -18,11 +18,8 @@ return require('packer').startup(function(use)
 	-- Theme & Syntax highlighting
 	use 'morhetz/gruvbox'
 	use 'joshdick/onedark.vim'
-	use {
-		'briones-gabriel/darcula-solid.nvim',
-		requires = 'rktjmp/lush.nvim'
-	}
-	use 'doums/darcula'
+	use 'scottmckendry/cyberdream.nvim'
+	use 'rebelot/kanagawa.nvim'
 	use 'nvim-treesitter/nvim-treesitter'
 	use {
 		'folke/todo-comments.nvim',

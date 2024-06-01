@@ -1,5 +1,4 @@
--- vim.opt.termguicolors = true
--- vim.cmd [[ colorscheme onedark ]]
+require('core.plugin_config.color_themes.kanagawa')
 
 local custom = {
 	['c'] = { 'gruvbox', 'dark' },
@@ -8,8 +7,9 @@ local custom = {
 	['cmake'] = { 'gruvbox', 'dark' },
 	['cs'] = { 'onedark', 'dark' },
 	['rust'] = { 'onedark', 'dark' },
+	['ps1'] = { 'cyberdream', 'dark' },
 }
-local default_theme = { 'onedark', 'dark' }
+local default_theme = { 'kanagawa-wave', '' }
 
 vim.opt.termguicolors = true
 
