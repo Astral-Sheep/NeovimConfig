@@ -18,7 +18,6 @@ return require('packer').startup(function(use)
 	-- Theme & Syntax highlighting
 	use 'morhetz/gruvbox'
 	use 'joshdick/onedark.vim'
-	use 'scottmckendry/cyberdream.nvim'
 	use 'rebelot/kanagawa.nvim'
 	use 'nvim-treesitter/nvim-treesitter'
 	use {
@@ -89,3 +88,4 @@ return require('packer').startup(function(use)
 		require('packer').sync()
 	end
 end)
+

@@ -34,17 +34,16 @@ then
 	set.fillchars:append({ eob = " " })
 end
 
--- set.background="dark"					-- Tell NeoVim what the background color looks like
 set.showtabline=2							-- Always show tabs
 set.showmode=false							-- We don't need to see things like -- INSERT -- anymore
 set.updatetime=300							-- Faster completion
 set.timeoutlen=500							-- By default timeoutlen is 1000 ms
 set.formatoptions:remove("cro")				-- Stop newline continution of comments
 set.clipboard="unnamedplus"					-- Copy paste between NeoVim and everything else
--- set.autochdir = true						-- Your working directory will always be the same as your working directory
 vim.cmd [[
 	source $VIMRUNTIME/mswin.vim
 
 	au! BufWritePost $MYVIMRC source %
 	let g:netrw_fastbrowse = 0
 ]]											-- Auto source when writing to init.vim alternatively you can run :source $MYVIMRC
+

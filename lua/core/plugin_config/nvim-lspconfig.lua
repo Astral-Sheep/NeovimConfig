@@ -6,11 +6,11 @@ local servers = {
 	'cmake',					-- CMake
 	'csharp_ls',				-- C#
 	'cssls',					-- CSS
-	-- 'gdscript',					-- GDScript
-	-- 'glslls',					-- GLSL
+	-- 'gdscript',				-- GDScript
+	-- 'glslls',				-- GLSL
 	'haxe_language_server',		-- Haxe
 	'html',						-- HTML
-	-- 'java_language_server',		-- Java
+	-- 'java_language_server',	-- Java
 	'jsonls',					-- JSON
 	'lua_ls',					-- Lua
 	'powershell_es',			-- Powershell

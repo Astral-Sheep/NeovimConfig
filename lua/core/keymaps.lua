@@ -31,3 +31,4 @@ map.set('n', '<S-TAB>', ':bprev<CR>:<BS>', { desc = "Go to the previous buffer" 
 map.set('n', '<S-b>', ':tabnew<CR>:<BS>', { desc = "Create a new buffer" })
 
 map.set('t', '<Esc>', '<C-\\><C-n>')
+

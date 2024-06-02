@@ -44,8 +44,6 @@ dap.configurations.cpp = {
 }
 dap.configurations.c = dap.configurations.cpp
 
-dap.set_log_level('TRACE')
-
 -- Mapping
 local map = vim.keymap
 local dap_widgets = require('dap.ui.widgets')

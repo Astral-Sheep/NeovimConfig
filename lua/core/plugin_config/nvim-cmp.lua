@@ -22,3 +22,4 @@ cmp.setup({
 		{ name = 'path' },
 	})
 })
+

@@ -36,9 +36,10 @@ require('nvim-treesitter.configs').setup {
 	},
 }
 
-local function refresh_treesitter()
-	local api = vim.api
+local api = vim.api
 
+-- Set custom highlighting when gruvbox is set
+local function refresh_treesitter()
 	if (vim.g.colors_name == 'gruvbox')
 	then
 		api.nvim_set_hl(0, 'Function',				{ link = 'GruvboxAquaBold' })
@@ -59,7 +60,7 @@ local function refresh_treesitter()
 	end
 end
 
-vim.api.nvim_create_autocmd('ColorScheme', {
+api.nvim_create_autocmd('ColorScheme', {
 	nested = true,
 	callback = refresh_treesitter
 })
