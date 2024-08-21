@@ -7,7 +7,7 @@ local servers = {
 	'csharp_ls',				-- C#
 	'cssls',					-- CSS
 	-- 'gdscript',				-- GDScript
-	-- 'glslls',				-- GLSL
+	'glsl_analyzer',			-- GLSL
 	'haxe_language_server',		-- Haxe
 	'html',						-- HTML
 	-- 'java_language_server',	-- Java

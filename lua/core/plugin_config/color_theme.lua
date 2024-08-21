@@ -78,7 +78,7 @@ opt.background = bg
 background = bg
 
 -- Add autocmd to update theme on filetype changed
-api.nvim_create_autocmd({ 'FileType', 'BufWinEnter' }, {
+api.nvim_create_autocmd({ 'FileType', 'BufWinEnter', 'BufEnter' }, {
 	nested = true,
 	callback = update_theme
 })

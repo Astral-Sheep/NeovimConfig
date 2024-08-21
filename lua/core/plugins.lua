@@ -70,18 +70,19 @@ return require('packer').startup(function(use)
 	use {
 		'iamcco/markdown-preview.nvim',
 		run = function() vim.fn["mkdp#util#install"]() end,
-	} 									-- Markdown preview
+	}                                   -- Markdown preview
 
 	-- Miscellaneous
-	use 'windwp/nvim-autopairs' 		-- Autocompletion for parenthesis, brackets...
-	use 'airblade/vim-rooter' 			-- Set root directory of opened project
-	use 'mhinz/vim-startify'			-- Start screen
-	use 'mhinz/vim-signify'				-- Show modified lined in file managed by a version control system (VCS)
-	use 'tpope/vim-surround'			-- Easy replacement of parentheses, brackets, quotes, ect by another surrounding pair of characters
-	use 'tpope/vim-commentary'			-- Comment code easily
-	use 'tpope/vim-fugitive'			-- Git commands
+	use 'windwp/nvim-autopairs'         -- Autocompletion for parenthesis, brackets...
+	use 'airblade/vim-rooter'           -- Set root directory of opened project
+	use 'mhinz/vim-startify'            -- Start screen
+	use 'mhinz/vim-signify'             -- Show modified lined in file managed by a version control system (VCS)
+	use 'tpope/vim-surround'            -- Easy replacement of parentheses, brackets, quotes, ect by another surrounding pair of characters
+	use 'tpope/vim-commentary'          -- Comment code easily
+	use 'tpope/vim-fugitive'            -- Git commands
 	use 'ntpeters/vim-better-whitespace'-- Highlight trailing whitespaces
-	use 'easymotion/vim-easymotion'		-- Motion bindings improvements
+	use 'easymotion/vim-easymotion'     -- Motion bindings improvements
+	use 'andweeb/presence.nvim'         -- Discord rich presence
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	if packer_bootstrap then

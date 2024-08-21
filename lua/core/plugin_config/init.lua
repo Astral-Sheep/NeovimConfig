@@ -25,4 +25,5 @@ require('core.plugin_config.nvim-web_devicons')
 require('core.plugin_config.vim-startify')
 require('core.plugin_config.aerial')
 require('core.plugin_config.markdown-preview')
+require('core.plugin_config.presence')
 
