@@ -42,8 +42,72 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lsp_config = require('lspconfig')
 
 for _, lsp in pairs(servers) do
-	lsp_config[lsp].setup {
-		on_attach = on_attach,
-		capabilities = capabilities,
-	}
+	if (lsp == 'lua_ls') then
+		lsp_config[lsp].setup {
+			on_attach = on_attach,
+			capabilities = capabilities,
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = {
+							'vim',
+
+							-- Premake globals, remove them if you don't have premake
+							-- Functions
+							'workspace',
+							'configurations',
+							'project',
+							'kind',
+							'language',
+							'targetdir',
+							'targetname',
+							'files',
+							'removefiles',
+							'filter',
+							'defines',
+							'removedefines',
+							'symbols',
+							'optimize',
+							'filename',
+							'location',
+							'links',
+							'libdirs',
+							'flags',
+							'platforms',
+							'removeplatforms',
+							'configmap',
+							'includedirs',
+							'pchheader',
+							'pchsource',
+							'buildoptions',
+							'linkoptions',
+							'newoption',
+							'newaction',
+							'iif',
+							'include',
+							'includeexternal',
+							'printf',
+							'verbosef',
+							-- Variables
+							'_ACTION',
+							'_ARGS',
+							'_MAIN_SCRIPT_DIR',
+							'_MAIN_SCRIPT',
+							'_OPTIONS',
+							'_OS',
+							'_PREMAKE_COMMAND',
+							'_PREMAKE_DIR',
+							'_PREMAKE_VERSION',
+							'_WORKING_DIR',
+						}
+					}
+				}
+			}
+		}
+	else
+		lsp_config[lsp].setup {
+			on_attach = on_attach,
+			capabilities = capabilities,
+		}
+	end
 end
