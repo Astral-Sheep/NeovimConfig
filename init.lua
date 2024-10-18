@@ -1,4 +1,4 @@
-require("core.settings")
-require("core.keymaps")
-require("core.plugins")
-require("core.plugin_config.init")
+require('config.settings')
+require('config.keymaps')
+require('config.lazy')
+require('config.colors')

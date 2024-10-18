@@ -100,11 +100,9 @@ map.set('n', '<C-Down>', '<C-w>j', { desc = "Go to bottom window" })
 
 map.set('n', '<C-n>', ':vs<CR>', { desc = "Create a new window on the right of the editor" })
 map.set('n', '<S-n>', ':sp<CR>', { desc = "Create a new window at the bottom of the editor" })
--- map.set('n', '<C-F4>', ':bprev<bar>sp<bar>bnext<bar>bdelete<CR>:<BS>', { desc = "Close current buffer" })
 map.set('n', '<C-S-F4>', ':bdelete<CR>:<BS>', { desc = "Close current buffer and its window if there are more than one" })
 map.set('n', '<TAB>', ':bnext<CR>:<BS>', { desc = "Go to the next buffer" })
 map.set('n', '<S-TAB>', ':bprev<CR>:<BS>', { desc = "Go to the previous buffer" })
 map.set('n', '<S-b>', ':tabnew<CR>:<BS>', { desc = "Create a new buffer" })
 
 map.set('t', '<Esc>', '<C-\\><C-n>')
-
