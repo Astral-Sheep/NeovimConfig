@@ -8,6 +8,20 @@ return {
 			icons_enabled = true,
 			theme = 'auto',
 			component_separators = '',
+			disabled_filetypes = {
+				'lspinfo',
+				'packer',
+				'checkhealth',
+				'help',
+				'man',
+				'gitcommit',
+				'startify',
+				'alpha',
+				'TelescopePrompt',
+				'TelescopeResults',
+				'NvimTree',
+				'',
+			},
 		},
 		sections = {
 			lualine_a = {

@@ -45,4 +45,16 @@ return {
 		--- Lazy Loading ---
 		lazy = false,
 	},
+	{
+		--- Source ---
+		'famiu/bufdelete.nvim',
+
+		--- Setup ---
+		config = function()
+			vim.keymap.set('n', '<C-F4>', ':Bdelete<CR>:<BS>')
+		end,
+
+		--- Lazy loading ---
+		lazy = false,
+	},
 }

@@ -3,7 +3,7 @@ vim.g.maplocalleader = ' '
 
 local set = vim.opt
 
-set.hidden=true								-- Required to keep multiple buffers open multiple buffers
+set.hidden=true								-- Required to keep multiple buffers open
 set.wrap=true								-- Display long lines as just one line
 set.encoding="utf-8"						-- The encoding displayed
 set.pumheight=10							-- Makes popup menu smaller
@@ -29,8 +29,7 @@ set.number=true								-- Line numbers
 set.cursorline=true							-- Enable highlighting of the current line
 
 -- Disable ~ symbols if number is set to true
-if (set.number)
-then
+if set.number then
 	set.fillchars:append({ eob = " " })
 end
 

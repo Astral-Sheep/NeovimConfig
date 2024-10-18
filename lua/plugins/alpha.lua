@@ -1,3 +1,16 @@
+local function get_listed_buffers()
+	local buffers = {}
+	local len = 0
+	for buffer = 1, vim.fn.bufnr('$') do
+		if vim.fn.buflisted(buffer) == 1 then
+	        len = len + 1
+		    buffers[len] = buffer
+		end
+	end
+
+	return buffers
+end
+
 return {
 	--- Source ---
 	'Astral-Sheep/alpha-nvim',
@@ -87,7 +100,7 @@ return {
 			dashboard.button('s l', "  Last session", ":'0<CR>"),
 			dashboard.button('f f', "  Find file", ':Telescope find_files<CR>'),
 			dashboard.button('f e', "  File explorer", ':NvimTreeOpen<CR>'),
-			dashboard.button('f w', "󰈭  Find word", ':Telescope find_word<CR>'),
+			dashboard.button('f w', "󰈭  Find word", ':Telescope live_grep<CR>'),
 			dashboard.button('c', "  Configuration", ':cd ' .. vim.fn.stdpath("config") .. '<CR>'),
 			dashboard.button('q', "󰅚  Quit", ':qa<CR>'),
 		}
@@ -102,6 +115,39 @@ return {
 
 		require('alpha').setup(dashboard.opts)
 		vim.cmd('autocmd FileType alpha setlocal nofoldenable')
+
+		vim.api.nvim_create_augroup('alpha_on_empty', { clear = true })
+		vim.api.nvim_create_autocmd('User', {
+			pattern = 'BDeletePre *',
+			group = 'alpha_on_empty',
+			callback = function()
+				local bufnr = vim.api.nvim_get_current_buf()
+				local name = vim.api.nvim_buf_get_name(bufnr)
+
+				if name == '' then
+					vim.cmd(':Alpha | bd#')
+				end
+			end
+			-- callback = function(event)
+			-- 	local found_non_empty_buffer = false
+			-- 	local buffers = get_listed_buffers()
+
+			-- 	for _, bufnr in ipairs(buffers) do
+			-- 		if not found_non_empty_buffer then
+			-- 			local name = vim.api.nvim_buf_get_name(bufnr)
+			-- 			local ft = vim.api.nvim_buf_get_option(bufnr, 'filetype')
+
+			-- 			if bufnr ~= event.buf and name ~= '' and ft ~= 'Alpha' then
+			-- 				found_non_empty_buffer = true
+			-- 			end
+			-- 		end
+			-- 	end
+
+			-- 	if not found_non_empty_buffer then
+			-- 		vim.cmd(':NvimTreeClose<CR>:Alpha<CR>')
+			-- 	end
+			-- end
+		})
 
 		local function set_stats()
 			local l_stats = require('lazy').stats()
