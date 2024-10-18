@@ -1,3 +1,5 @@
+vim.diagnostic.config{ update_in_insert = true }
+
 require('bufferline').setup {
 	options = {
 		mode = "buffers",
@@ -20,7 +22,7 @@ require('bufferline').setup {
 		truncate_names = true,
 		tab_size = 15,
 		diagnostics = "nvim_lsp",
-		diagnostics_update_in_insert = true,
+		-- diagnostics_update_in_insert = true,
 		diagnostics_indicator = function(count, level, _, _)
 			if count > 1 then
 				return "("..count.." "..level.."s)"

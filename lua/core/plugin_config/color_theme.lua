@@ -12,8 +12,9 @@ local custom = {
 	cs = { 'onedark', 'dark' },
 	rust = { 'onedark', 'dark' },
 }
-local default_theme = { 'kanagawa-wave', '' }
+local default_theme = { 'kanagawa', '' }
 
+local background
 opt.termguicolors = true
 
 -- Return the filetype of the current buffer
@@ -31,24 +32,8 @@ local function get_file_theme(filetype)
 	end
 end
 
-local background
-
--- Recover the filetype of the current buffer, and set the theme according to it
-local function update_theme()
-	-- Recover filetype
-	local filetype = get_filetype()
-
-	if (filetype == nil or filetype == "")
-	then
-		return
-	end
-
-	-- Recover theme
-	local color_scheme = get_file_theme(filetype)
-	local scheme = color_scheme[1]
-	local bg = color_scheme[2]
-
-	-- Set theme
+-- Set the colorscheme
+local function set_theme(scheme, bg)
 	if (scheme ~= nil and scheme ~= vim.g.colors_name)
 	then
 		cmd[[ hi clear ]]
@@ -60,6 +45,20 @@ local function update_theme()
 		opt.background = bg
 		background = bg
 	end
+end
+
+-- Recover the filetype of the current buffer, and set the theme according to it
+local function update_theme()
+	-- Recover filetype
+	local filetype = get_filetype()
+
+	if (filetype == nil or filetype == "")
+	then
+		return
+	end
+
+	local color_scheme = get_file_theme(filetype)
+	set_theme(color_scheme[1], color_scheme[2])
 end
 
 -- Set theme on nvim start
@@ -84,13 +83,15 @@ api.nvim_create_autocmd({ 'FileType', 'BufWinEnter', 'BufEnter' }, {
 })
 
 -- Add user commands to change theme manually
-local themes = {
-	gruvbox = 'Gruvbox',
-	onedark = 'Onedark',
-	kanagawa = 'Kanagawa',
+local theme_commands = {
+	Gruvbox = { 'gruvbox', 'dark' },
+	Onedark = { 'onedark', 'dark' },
+	Kanagawa = { 'kanagawa', 'dark' },
 }
 
-for theme, command in pairs(themes) do
-	api.nvim_create_user_command(command, 'colorscheme ' .. theme, {})
+for command, theme in pairs(theme_commands) do
+	api.nvim_create_user_command(command, function()
+		set_theme(theme[1], theme[2])
+	end,
+	{})
 end
-

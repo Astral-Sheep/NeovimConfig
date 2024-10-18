@@ -1,27 +1,28 @@
 require('nvim-treesitter.configs').setup {
 	-- A list of parser names, or "all"
 	ensure_installed = {
-		"arduino",
+		-- "arduino",
 		"bash",
 		"c",
 		"c_sharp",
 		"cmake",
 		"cpp",
-		"css",
-		"gdscript",
+		-- "css",
+		-- "gdscript",
 		"gitattributes",
 		"glsl",
 		"hlsl",
-		"html",
-		"java",
-		"javascript",
+		-- "html",
+		-- "java",
+		-- "javascript",
 		"json",
 		"lua",
 		"markdown",
 		"python",
 		"rust",
-		"typescript",
+		-- "typescript",
 		"vim",
+		"vimdoc",
 		"yaml",
 	},
 
@@ -66,4 +67,3 @@ api.nvim_create_autocmd('ColorScheme', {
 })
 
 refresh_treesitter()
-
