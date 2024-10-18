@@ -1,14 +1,24 @@
-local function get_listed_buffers()
-	local buffers = {}
-	local len = 0
-	for buffer = 1, vim.fn.bufnr('$') do
-		if vim.fn.buflisted(buffer) == 1 then
-	        len = len + 1
-		    buffers[len] = buffer
-		end
-	end
+local WIDTH = 35
 
-	return buffers
+local function center_text(text, width)
+	local total_padding = width - #text
+	local left_padding = math.floor(total_padding / 2)
+	local right_padding = total_padding - left_padding
+	return string.rep(" ", left_padding) .. text .. string.rep(" ", right_padding)
+end
+
+local function text(txt, highlight, pos)
+	return { type = 'text', val = txt, opts = { hl = highlight, position = pos } }
+end
+
+local function set_stats()
+	local l_stats = require('lazy').stats()
+	require('alpha.themes.dashboard').section.footer.val = {
+		center_text(string.rep('—', WIDTH), WIDTH),
+		center_text("   Loaded " .. l_stats.loaded .. "/" .. l_stats.count .. " plugins in " .. math.floor(l_stats.startuptime) .. " ms", WIDTH),
+		center_text(string.rep('—', WIDTH), WIDTH),
+	}
+	vim.cmd(':AlphaRedraw')
 end
 
 return {
@@ -17,23 +27,11 @@ return {
 
 	--- Setup ---
 	config = function()
-		local btn_width = 35
 		local dashboard = require('alpha.themes.dashboard')
-		dashboard.set_width(btn_width)
-
-		local function center_text(text, width)
-			local total_padding = width - #text
-			local left_padding = math.floor(total_padding / 2)
-			local right_padding = total_padding - left_padding
-			return string.rep(" ", left_padding) .. text .. string.rep(" ", right_padding)
-		end
-
-		local function text(txt, highlight, pos)
-			return { type = 'text', val = txt, opts = { hl = highlight, position = pos } }
-		end
-
+		dashboard.set_width(WIDTH)
 		local v = vim.version()
 
+		-- Set header
 		dashboard.section.header.val = {
 			" ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗",
 			" ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║",
@@ -94,6 +92,7 @@ return {
 		-- 	center_text(" v" .. v.major .. "." .. v.minor .. "." .. v.patch, 32),
 		-- }
 
+		-- Set buttons
 		dashboard.section.buttons.val = {
 			-- text("  v" .. v.major .. "." .. v.minor .. "." .. v.patch, 'SpecialComment', 'center'),
 			dashboard.button('e', "  Empty file", ':ene <BAR> startinsert<CR>'),
@@ -105,59 +104,21 @@ return {
 			dashboard.button('q', "󰅚  Quit", ':qa<CR>'),
 		}
 
+		-- Set footer
 		local stats = require('lazy').stats()
 
 		dashboard.section.footer.val = {
-			center_text(string.rep('—', btn_width), btn_width),
-			center_text("   Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins" , btn_width),
-			center_text(string.rep('—', btn_width), btn_width),
+			center_text(string.rep('—', WIDTH), WIDTH),
+			center_text("   Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. math.floor(stats.startuptime) .. " ms", WIDTH),
+			center_text(string.rep('—', WIDTH), WIDTH),
 		}
 
 		require('alpha').setup(dashboard.opts)
 		vim.cmd('autocmd FileType alpha setlocal nofoldenable')
-
-		vim.api.nvim_create_augroup('alpha_on_empty', { clear = true })
-		vim.api.nvim_create_autocmd('User', {
-			pattern = 'BDeletePre *',
-			group = 'alpha_on_empty',
-			callback = function()
-				local bufnr = vim.api.nvim_get_current_buf()
-				local name = vim.api.nvim_buf_get_name(bufnr)
-
-				if name == '' then
-					vim.cmd(':Alpha | bd#')
-				end
-			end
-			-- callback = function(event)
-			-- 	local found_non_empty_buffer = false
-			-- 	local buffers = get_listed_buffers()
-
-			-- 	for _, bufnr in ipairs(buffers) do
-			-- 		if not found_non_empty_buffer then
-			-- 			local name = vim.api.nvim_buf_get_name(bufnr)
-			-- 			local ft = vim.api.nvim_buf_get_option(bufnr, 'filetype')
-
-			-- 			if bufnr ~= event.buf and name ~= '' and ft ~= 'Alpha' then
-			-- 				found_non_empty_buffer = true
-			-- 			end
-			-- 		end
-			-- 	end
-
-			-- 	if not found_non_empty_buffer then
-			-- 		vim.cmd(':NvimTreeClose<CR>:Alpha<CR>')
-			-- 	end
-			-- end
+		vim.keymap.set('n', 'go', ':%bd<BAR>Alpha<BAR>bd#<CR>', {
+			silent = true,
+			desc = "Close all buffers and open Alpha",
 		})
-
-		local function set_stats()
-			local l_stats = require('lazy').stats()
-			dashboard.section.footer.val = {
-				center_text(string.rep('—', btn_width), btn_width),
-				center_text("   Loaded " .. l_stats.loaded .. "/" .. l_stats.count .. " plugins in " .. math.floor(l_stats.startuptime) .. " ms", btn_width),
-				center_text(string.rep('—', btn_width), btn_width),
-			}
-			vim.cmd(':AlphaRedraw')
-		end
 
 		-- Display startup time on UIEnter
 		vim.api.nvim_create_autocmd('UIEnter', {
@@ -166,9 +127,21 @@ return {
 				set_stats()
 				vim.api.nvim_create_autocmd('User', {
 					pattern = 'AlphaReady',
-					once = false,
 					callback = set_stats,
 				})
+			end
+		})
+
+		-- Display Alpha when all buffers are closed
+		vim.api.nvim_create_autocmd('User', {
+			pattern = 'BDeletePre *',
+			callback = function()
+				local bufnr = vim.api.nvim_get_current_buf()
+				local name = vim.api.nvim_buf_get_name(bufnr)
+
+				if name == '' then
+					vim.cmd(':Alpha | bd#')
+				end
 			end
 		})
 	end,

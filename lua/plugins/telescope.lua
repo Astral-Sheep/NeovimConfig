@@ -19,10 +19,22 @@ return {
 		local builtin = require('telescope.builtin')
 		local map = vim.keymap
 
-		map.set('n', '<C-p>', builtin.find_files, {})
-		map.set('n', '<S-p>', builtin.oldfiles, {})
-		map.set('n', '<C-f>', builtin.live_grep, {})
-		map.set('n', '<S-f>', builtin.help_tags, {})
+		map.set('n', '<C-p>', builtin.find_files, {
+			silent = true,
+			desc = "Find files with Telescope",
+		})
+		map.set('n', '<S-p>', builtin.oldfiles, {
+			silent = true,
+			desc = "Display list of last opened files with Telescope",
+		})
+		map.set('n', '<C-f>', builtin.live_grep, {
+			silent = true,
+			desc = "Find character sequences in folder files",
+		})
+		map.set('n', '<S-f>', builtin.help_tags, {
+			silent = true,
+			desc = "Display list of plugin help files",
+		})
 	end,
 
 	--- Lazy Loading ---

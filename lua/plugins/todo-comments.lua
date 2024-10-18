@@ -78,11 +78,17 @@ return {
 
 		vim.keymap.set('n', 't', function()
 			comments.jump_next()
-		end, { desc = "Next todo comment" })
+		end, {
+			silent = true,
+			desc = "Next todo comment",
+		})
 
 		vim.keymap.set('n', '<S-t>', function()
 			comments.jump_prev()
-		end, { desc = "Previous todo comment" })
+		end, {
+			silent = true,
+			desc = "Previous todo comment"
+		})
 	end,
 
 	--- Lazy Loading ---

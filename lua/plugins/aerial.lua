@@ -12,8 +12,16 @@ return {
 	opts = {
 		on_attach = function(bufnr)
 			-- Jump forwards/backwards with ',' and ';'
-			vim.keymap.set('n', ',', ':AerialPrev<CR>', { buffer = bufnr })
-			vim.keymap.set('n', ';', ':AerialNext<CR>', { buffer = bufnr })
+			vim.keymap.set('n', ',', ':AerialPrev<CR>', {
+				buffer = bufnr,
+				silent = true,
+				desc = "Go to previous function",
+			})
+			vim.keymap.set('n', ';', ':AerialNext<CR>', {
+				buffer = bufnr,
+				silent = true,
+				desc = "Go to next function",
+			})
 		end,
 	},
 	config = function(_, opts)

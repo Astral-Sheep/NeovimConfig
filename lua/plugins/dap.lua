@@ -62,51 +62,79 @@ return {
 		local dap_widgets = require('dap.ui.widgets')
 		map.set('n', 'bp', function()
 			dap.toggle_breakpoint()
-		end)	-- bp for BreakPoint
+		end, {
+			silent = true,
+			desc = "Toggle breakpoint on current line",
+		})	-- bp for BreakPoint
 
 		map.set('n', '<C-b>p', function()
 			dap.set_breakpoint()
-		end)	-- bp for BreakPoint
+		end, {
+			silent = true,
+			desc = "Enable breakpoint on current line",
+		})	-- bp for BreakPoint
 
 		map.set('n', 'cp', function()
 			dap.set_breakpoint(fn.input("Stop condition: "))
-		end)	-- cp for Conditional breakPoint
+		end, {
+			silent = true,
+			desc = "Enable conditional breakpoint on current line",
+		})	-- cp for Conditional breakPoint
 
 		map.set('n', 'lp', function()
 			dap.set_breakpoint(nil, nil, fn.input("Log point message: "))
-		end)	-- lp for LogPoint
+		end, {
+			silent = true,
+			desc = "Enable breakpoint with message on current line",
+		})	-- lp for LogPoint
 
 		map.set('n', '<F4>', function()
 			dap.disconnect({ terminateDebuggee = true })
-		end)
+		end, {
+			desc = "Disconnect debugger",
+		})
 
 		map.set('n', '<F5>', function()
 			dap.continue()
-		end)
+		end, {
+			desc = "Continue program execution",
+		})
 
 		map.set('n', '<F6>', function()
 			dap.restart()
-		end)
+		end, {
+			desc = "Restart program",
+		})
 
 		map.set('n', '<F10>', function()
 			dap.step_over()
-		end)
+		end, {
+			desc = "Go to next program step",
+		})
 
 		map.set('n', '<S-F10>', function()
 			dap.step_back()
-		end)
+		end, {
+			desc = "Go to last program step",
+		})
 
 		map.set('n', '<F11>', function()
 			dap.step_into()
-		end)
+		end, {
+			desc = "Go to program step into function",
+		})
 
 		map.set('n', '<F12>', function()
 			dap.step_out()
-		end)
+		end, {
+			desc = "Go to program step outside of current function",
+		})
 
 		map.set('n', 'gt', function()
 			dap.goto_()
-		end)	-- gt for Go To
+		end, {
+			desc = "Go to line under cursor",
+		})	-- gt for Go To
 
 		map.set('n', 'dr', function()
 			dap.repl.open()
@@ -114,7 +142,9 @@ return {
 
 		map.set('n', 'dl', function()
 			dap.run_last()
-		end)	-- dl for Dap run Last
+		end, {
+			desc = "Run last debugging configuration",
+		})	-- dl for Dap run Last
 
 		map.set({ 'n', 'v' }, 'dh', function()
 			dap_widgets.hover()

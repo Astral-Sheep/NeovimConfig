@@ -65,13 +65,31 @@ return {
 				local map = vim.keymap
 				local lsp = vim.lsp
 
-				map.set('n', '<C-r><C-r>', lsp.buf.rename, {})
-				map.set('n', '<leader>ca', lsp.buf.code_action, {})
+				map.set('n', '<C-r><C-r>', lsp.buf.rename, {
+					silent = true,
+					desc = "Rename symbol under cursor",
+				})
+				map.set('n', '<leader>ca', lsp.buf.code_action, {
+					silent = true,
+					desc = "Display code actions",
+				})
 
-				map.set('n', 'gd', lsp.buf.definition, {})
-				map.set('n', 'gi', lsp.buf.implementation, {})
-				map.set('n', 'gr', require('telescope.builtin').lsp_references, {})
-				map.set('n', 'gh', lsp.buf.hover, {})
+				map.set('n', 'gd', lsp.buf.definition, {
+					silent = true,
+					desc = "Go to symbol definition",
+				})
+				map.set('n', 'gi', lsp.buf.implementation, {
+					silent = true,
+					desc = "Go to symbol implementation",
+				})
+				map.set('n', 'gr', require('telescope.builtin').lsp_references, {
+					silent = true,
+					desc = "Display symbols references in folder",
+				})
+				map.set('n', 'gh', lsp.buf.hover, {
+					silent = true,
+					desc = "Display symbol info",
+				})
 			end
 
 			local configs = {
