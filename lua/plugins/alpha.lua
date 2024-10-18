@@ -103,17 +103,26 @@ return {
 		require('alpha').setup(dashboard.opts)
 		vim.cmd('autocmd FileType alpha setlocal nofoldenable')
 
+		local function set_stats()
+			local l_stats = require('lazy').stats()
+			dashboard.section.footer.val = {
+				center_text(string.rep('—', btn_width), btn_width),
+				center_text("   Loaded " .. l_stats.loaded .. "/" .. l_stats.count .. " plugins in " .. math.floor(l_stats.startuptime) .. " ms", btn_width),
+				center_text(string.rep('—', btn_width), btn_width),
+			}
+			vim.cmd(':AlphaRedraw')
+		end
+
 		-- Display startup time on UIEnter
 		vim.api.nvim_create_autocmd('UIEnter', {
 			once = true,
 			callback = function()
-				local l_stats = require('lazy').stats()
-				dashboard.section.footer.val = {
-					center_text(string.rep('—', btn_width), btn_width),
-					center_text("   Loaded " .. l_stats.loaded .. "/" .. l_stats.count .. " plugins in " .. math.floor(l_stats.startuptime) .. " ms", btn_width),
-					center_text(string.rep('—', btn_width), btn_width),
-				}
-				vim.cmd(':AlphaRedraw')
+				set_stats()
+				vim.api.nvim_create_autocmd('User', {
+					pattern = 'AlphaReady',
+					once = false,
+					callback = set_stats,
+				})
 			end
 		})
 	end,

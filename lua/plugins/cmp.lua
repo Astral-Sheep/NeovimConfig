@@ -4,10 +4,11 @@ return {
 
 	--- Loading ---
 	dependencies = {
-		'hrsh7th/vim-vsnip',
 		'hrsh7th/cmp-nvim-lsp',
 		'hrsh7th/cmp-buffer',
 		'hrsh7th/cmp-path',
+		'hrsh7th/cmp-vsnip',
+		'hrsh7th/vim-vsnip',
 	},
 
 	--- Setup ---
@@ -29,7 +30,7 @@ return {
 				['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 			}),
 			sources = cmp.config.sources({
-				{ name = 'nvim-lsp' },
+				{ name = 'nvim_lsp' },
 				{ name = 'vsnip' },
 				{ name = 'buffer' },
 				{ name = 'path' },
