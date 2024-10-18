@@ -40,12 +40,12 @@ return {
 			additional_vim_regex_highlighting = false,
 		},
 	},
-	build = function()
-		vim.cmd(':TSUpdate')
+	config = function(_, opts)
+		require('nvim-treesitter.configs').setup(opts)
 
 		local function refresh_treesitter()
 			local api = vim.api
-
+		
 			if vim.g.colors_name == 'gruvbox' then
 				api.nvim_set_hl(0, 'Function',				{ link = 'GruvboxAquaBold' })
 				api.nvim_set_hl(0, 'Constant', 				{ link = 'GruvboxAqua' })
@@ -55,7 +55,7 @@ return {
 				api.nvim_set_hl(0, 'StorageClass',			{ link = 'GruvboxRed' })
 				api.nvim_set_hl(0, 'Structure',				{ link = 'GruvboxYellow' })
 				api.nvim_set_hl(0, 'Typedef',				{ link = 'GruvboxYellow' })
-
+		
 				api.nvim_set_hl(0, '@type.qualifier',		{ link = 'Keyword' })
 				api.nvim_set_hl(0, '@keyword.directive',	{ link = 'PreProc' })
 				api.nvim_set_hl(0, '@keyword.import',		{ link = 'PreProc' })
@@ -69,6 +69,9 @@ return {
 			nested = true,
 			callback = refresh_treesitter,
 		})
+
+		refresh_treesitter()
+		vim.cmd(':TSUpdate')
 	end,
 
 	--- Lazy Loading ---
