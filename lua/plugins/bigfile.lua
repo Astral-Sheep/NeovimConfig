@@ -16,4 +16,7 @@ return {
 			'matchparen', -- ':NoMatchParen' globally, currently this feature will stay disabled, even after you close the big file
 		},
 	},
+
+	--- Lazy Loading ---
+	lazy = false,
 }

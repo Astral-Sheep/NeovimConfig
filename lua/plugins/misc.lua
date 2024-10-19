@@ -51,7 +51,7 @@ return {
 
 		--- Setup ---
 		config = function()
-			vim.keymap.set('n', '<C-F4>', ':Bdelete<CR>:<BS>', {
+			vim.keymap.set('n', '<C-F4>', ':Bdelete<CR>', {
 				silent = true,
 				desc = "Close active buffer if there is one",
 			})
