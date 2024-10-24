@@ -189,3 +189,9 @@ Normal mode:
 `:Kanagawa` -> Set theme to Kanagawa
 
 `:Onedark` -> Set theme to Onedark
+
+`:Nord` -> Set theme to Nord
+
+`:Catppuccin` -> Set theme to Catppuccin
+
+`:SetDefaultTheme {theme}` -> Set default theme
