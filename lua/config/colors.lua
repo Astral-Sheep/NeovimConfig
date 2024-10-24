@@ -2,19 +2,24 @@ local api = vim.api
 local cmd = vim.cmd
 local opt = vim.opt
 
-local kanagawa = { 'kanagawa', '' }
-local gruvbox = { 'gruvbox', 'dark' }
-local onedark = { 'onedark', 'dark' }
+local themes = {
+	Kanagawa =   { 'kanagawa', '' },
+	Gruvbox =    { 'gruvbox', 'dark' },
+	Onedark =    { 'onedark', 'dark' },
+	Catppuccin = { 'catppuccin', 'dark' },
+	Nord =       { 'nord', 'dark' },
+}
 
 local file_themes = {
-	c = gruvbox,
-	cpp = gruvbox,
-	tpp = gruvbox,
-	cmake = gruvbox,
-	cs = onedark,
-	rust = onedark
+	c = themes['Gruvbox'],
+	cpp = themes['Gruvbox'],
+	tpp = themes['Gruvbox'],
+	cmake = themes['Gruvbox'],
+	cs = themes['Onedark'],
+	rust = themes['Onedark'],
 }
-local default_theme = kanagawa
+
+local background
 
 -- Return the filetype of the current buffer
 local function get_filetype()
@@ -25,12 +30,9 @@ local function get_file_theme(ft)
 	if file_themes[ft] ~= nil then
 		return file_themes[ft]
 	else
-		return default_theme
+		return themes['Default']
 	end
 end
-
-local background
-opt.termguicolors = true
 
 -- Set the colorscheme
 local function set_theme(theme)
@@ -61,35 +63,73 @@ local function update_theme()
 	set_theme(color_scheme)
 end
 
--- Set theme on nvim start
-local scheme = default_theme[1]
-local bg = default_theme[2]
-local ft = get_filetype()
+local function set_default(name)
+	local last = vim.g.DEFAULT_THEME[1]
+	vim.g.DEFAULT_THEME = themes[name] or vim.g.DEFAULT_THEME
 
-if file_themes[ft] ~= nil then
-	scheme = file_themes[ft][1]
-	bg = file_themes[ft][2]
+	if (last ~= vim.g.DEFAULT_THEME[1]) then
+		themes['Default'] = vim.g.DEFAULT_THEME
+		print("Default theme set to " .. name)
+	end
 end
 
-cmd.colorscheme(scheme)
-opt.background = bg
-background = bg
+local function init()
+	if vim.g.DEFAULT_THEME == nil then
+		print("Default theme set to Kanagawa")
+		vim.g.DEFAULT_THEME = themes['Kanagawa']
+	end
 
--- Add autocmd to update theme on filetype changed
-api.nvim_create_autocmd({ 'FileType', 'BufWinEnter', 'BufEnter' }, {
+	themes['Default'] = vim.g.DEFAULT_THEME
+
+	-- Set theme on nvim start
+	local scheme = themes['Default'][1]
+	local bg = themes['Default'][2]
+	local ft = get_filetype()
+
+	if file_themes[ft] ~= nil then
+		scheme = file_themes[ft][1]
+		bg = file_themes[ft][2]
+	end
+
+	opt.termguicolors = true
+	cmd.colorscheme(scheme)
+	opt.background = bg
+	background = bg
+
+	-- Add autocmd to update theme on filetype changed
+	api.nvim_create_autocmd({ 'FileType', 'BufWinEnter', 'BufEnter' }, {
+		nested = true,
+		callback = update_theme,
+	})
+
+	-- User commands to change theme manually
+	for name, _ in pairs(themes) do
+		api.nvim_create_user_command(name, function()
+			set_theme(themes[name])
+		end, {})
+	end
+
+	-- User command to set the default theme
+	api.nvim_create_user_command('SetDefaultTheme', function(opts)
+		set_default(opts.fargs[1])
+	end, {
+		nargs = 1,
+		complete = function(arglead, _, _)
+			local potential_args = {}
+
+			for k, _ in pairs(themes) do
+				if (#k >= #arglead and string.lower(string.sub(k, 1, #arglead)) == string.lower(arglead)) then
+					potential_args[#potential_args + 1] = k
+				end
+			end
+
+			return potential_args
+		end,
+	})
+end
+
+-- Call init only when shada files are loaded
+api.nvim_create_autocmd('VimEnter', {
 	nested = true,
-	callback = update_theme,
+	callback = init,
 })
-
--- Add user commands to change theme manually
-local cmds = {
-	Gruvbox = gruvbox,
-	Onedark = onedark,
-	Kanagawa = kanagawa,
-}
-
-for command, theme in pairs(cmds) do
-	api.nvim_create_user_command(command, function()
-		set_theme(theme)
-	end, {})
-end

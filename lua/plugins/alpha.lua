@@ -43,8 +43,8 @@ return {
 		-- 	center_text(" v" .. v.major .. "." .. v.minor .. "." .. v.patch, 55),
 		-- }
 
-		dashboard.config.layout[1].val = 0
-		dashboard.config.layout[2].val = 0
+		dashboard.config.layout[1].val = 1
+		dashboard.config.layout[2].val = 1
 		dashboard.config.layout[3].val = 1
 		dashboard.section.header.val = {
 			'',
@@ -59,9 +59,9 @@ return {
     		" ⠙⠃   ⣼⣿⡟  ⠈⠻⣿⣿⣦⣌⡇⠻⣿⣿⣷⣿⣿⣿ ⣿⣿⡇⠄⠛⠻⢷⣄ ",
     		"      ⢻⣿⣿⣄   ⠈⠻⣿⣿⣿⣷⣿⣿⣿⣿⣿⡟ ⠫⢿⣿⡆     ",
     		"       ⠻⣿⣿⣿⣿⣶⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⡟⢀⣀⣤⣾⡿⠃     ",
-    		"     ⢰⣶  ⣶ ⢶⣆⢀⣶⠂⣶⡶⠶⣦⡄⢰⣶⠶⢶⣦  ⣴⣶     ",
-    		"     ⢸⣿⠶⠶⣿ ⠈⢻⣿⠁ ⣿⡇ ⢸⣿⢸⣿⢶⣾⠏ ⣸⣟⣹⣧    ",
-    		"     ⠸⠿  ⠿  ⠸⠿  ⠿⠷⠶⠿⠃⠸⠿⠄⠙⠷⠤⠿⠉⠉⠿⠆   ",
+    		-- "     ⢰⣶  ⣶ ⢶⣆⢀⣶⠂⣶⡶⠶⣦⡄⢰⣶⠶⢶⣦  ⣴⣶     ",
+    		-- "     ⢸⣿⠶⠶⣿ ⠈⢻⣿⠁ ⣿⡇ ⢸⣿⢸⣿⢶⣾⠏ ⣸⣟⣹⣧    ",
+    		-- "     ⠸⠿  ⠿  ⠸⠿  ⠿⠷⠶⠿⠃⠸⠿⠄⠙⠷⠤⠿⠉⠉⠿⠆   ",
 			"",
 			center_text(" v" .. v.major .. "." .. v.minor .. "." .. v.patch, 35),
 		}
@@ -96,7 +96,7 @@ return {
 		dashboard.section.buttons.val = {
 			-- text("  v" .. v.major .. "." .. v.minor .. "." .. v.patch, 'SpecialComment', 'center'),
 			dashboard.button('e', "  Empty file", ':ene <BAR> startinsert<CR>'),
-			dashboard.button('s l', "  Last session", ":'0<CR>"),
+			dashboard.button('s l', "  Last session", ":SessionRestore<CR>"),
 			dashboard.button('f f', "  Find file", ':Telescope find_files<CR>'),
 			dashboard.button('f e', "  File explorer", ':NvimTreeOpen<CR>'),
 			dashboard.button('f w', "󰈭  Find word", ':Telescope live_grep<CR>'),

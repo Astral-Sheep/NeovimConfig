@@ -33,7 +33,7 @@ return {
 		},
 
 		--- Lazy loading ---
-		lazy = false,
+		lazy = true,
 	},
 	{
 		--- Source ---
@@ -49,4 +49,28 @@ return {
 		--- Lazy loading ---
 		lazy = true,
 	},
+	{
+		--- Source ---
+		'shaunsingh/nord.nvim',
+
+		--- Lazy loading ---
+		lazy = true,
+	},
+	{
+		--- Source ---
+		'catppuccin/nvim',
+		name = "catppuccin",
+
+		--- Setup ---
+		opts = {
+			flavour = 'macchiato',
+			background = {
+				light = 'latte',
+				dark = 'macchiato',
+			},
+		},
+
+		--- Lazy loading ---
+		lazy = true,
+	}
 }
