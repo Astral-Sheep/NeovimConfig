@@ -104,7 +104,7 @@ Normal mode:
 
 - **;** (`:AerialNext<CR>`) -> Go to the next symbol
 
-- **<CR>** | **Ctrl+M** (`:AerialToggle!<CR>`) -> Toggle the code outline window
+- **Enter** | **Ctrl+M** (`:AerialToggle!<CR>`) -> Toggle the code outline window
 
 ### NvimTree keymaps
 
@@ -152,7 +152,7 @@ Normal mode:
 
 - **F10** (`dap.steop_over()`) -> Go to the next program step
 
-- **Shift+F10* (`dap.step_back()`) -> Go to the last program step
+- **Shift+F10** (`dap.step_back()`) -> Go to the last program step
 
 - **F11** (`dap.step_into()`) -> Go to program step into function
 
