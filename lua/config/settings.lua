@@ -40,7 +40,10 @@ set.timeoutlen=500							-- By default timeoutlen is 1000 ms
 set.formatoptions:remove("cro")				-- Stop newline continution of comments
 set.clipboard="unnamedplus"					-- Copy paste between NeoVim and everything else
 
-vim.diagnostic.config({ update_in_insert = false })
+vim.diagnostic.config({
+	update_in_insert = false,
+	severity_sort = true,
+})
 
 vim.cmd [[
 	source $VIMRUNTIME/mswin.vim

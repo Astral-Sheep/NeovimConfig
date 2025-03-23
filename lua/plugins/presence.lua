@@ -2,6 +2,9 @@ return {
 	--- Source ---
 	'andweeb/presence.nvim',
 
+	--- Loading ---
+	enabled = false,
+
 	--- Setup ---
 	opts = {
 		-- General options
