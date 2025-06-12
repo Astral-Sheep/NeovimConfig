@@ -12,9 +12,9 @@ return {
 			-- },
 			display = {
 				theme = 'default', -- Values: default, atom or catppuccin
-				flavor = 'accent', -- Values: dark, light or accent
+				flavor = 'dark', -- Values: dark, light or accent
 				swap_fields = false,
-				swap_icons = true,
+				swap_icons = false,
 			},
 			timestamp = {
 				enabled = true,

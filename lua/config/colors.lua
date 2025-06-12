@@ -3,23 +3,29 @@ local cmd = vim.cmd
 local opt = vim.opt
 
 local themes = {
-	Kanagawa =   { 'kanagawa', '' },
-	Gruvbox =    { 'gruvbox', 'dark' },
-	Onedark =    { 'onedark', 'dark' },
-	Catppuccin = { 'catppuccin', 'dark' },
-	Nord =       { 'nord', 'dark' },
+	Kanagawa = {
+		dark = 'wave',
+		light = 'lotus',
+	},
+	Gruvbox = {},
+	Onedark = {},
+	Nord = {},
+	Catppuccin = {},
+	Mellifluous = {},
+	Miasma = {},
+	Neofusion = {},
 }
+
+local modes = { 'dark', 'light' }
 
 local file_themes = {
-	c = themes['Gruvbox'],
-	cpp = themes['Gruvbox'],
-	tpp = themes['Gruvbox'],
-	cmake = themes['Gruvbox'],
-	cs = themes['Onedark'],
-	rust = themes['Onedark'],
+	c = 'Gruvbox',
+	cpp = 'Gruvbox',
+	tpp = 'Gruvbox',
+	cmake = 'Gruvbox',
+	cs = 'Onedark',
+	rust = 'Onedark',
 }
-
-local background
 
 -- Return the filetype of the current buffer
 local function get_filetype()
@@ -30,8 +36,17 @@ local function get_file_theme(ft)
 	if file_themes[ft] ~= nil then
 		return file_themes[ft]
 	else
-		return themes['Default']
+		return vim.g.DEFAULT_THEME
 	end
+end
+
+local function set_color_mode(mode)
+	if mode == nil or mode == opt.background then
+		return
+	end
+
+	vim.g.COLOR_MODE = mode
+	opt.background = themes[vim.g.COLOR_MODE] or vim.g.COLOR_MODE
 end
 
 -- Set the colorscheme
@@ -40,15 +55,14 @@ local function set_theme(theme)
 		return
 	end
 
-	if theme[1] ~= nil and theme[1] ~= vim.g.colors_name then
+	local ltheme = theme:lower()
+
+	if ltheme ~= nil and ltheme ~= vim.g.colors_name then
 		cmd('hi clear')
-		cmd.colorscheme(theme[1])
+		cmd.colorscheme(ltheme)
 	end
 
-	if theme[2] ~= nil and theme[2] ~= background then
-		opt.background = theme[2]
-		background = theme[2]
-	end
+	set_color_mode(vim.g.COLOR_MODE)
 end
 
 -- Recover the filetype of the current buffer, and set the theme according to it
@@ -59,42 +73,42 @@ local function update_theme()
 		return
 	end
 
-	local color_scheme = get_file_theme(ft)
-	set_theme(color_scheme)
+	set_theme(get_file_theme(ft))
 end
 
-local function set_default(name)
-	local last = vim.g.DEFAULT_THEME[1]
-	vim.g.DEFAULT_THEME = themes[name] or vim.g.DEFAULT_THEME
+local function set_default_theme(name)
+	local last = vim.g.DEFAULT_THEME
+	vim.g.DEFAULT_THEME = name or vim.g.DEFAULT_THEME
 
-	if (last ~= vim.g.DEFAULT_THEME[1]) then
-		themes['Default'] = vim.g.DEFAULT_THEME
+	if last ~= vim.g.DEFAULT_THEME then
 		print("Default theme set to " .. name)
 	end
 end
 
 local function init()
-	if vim.g.DEFAULT_THEME == nil then
+	if vim.g.DEFAULT_THEME == nil or vim.g.DEFAULT_THEME.empty then
 		print("Default theme set to Kanagawa")
-		vim.g.DEFAULT_THEME = themes['Kanagawa']
+		vim.g.DEFAULT_THEME = 'Kanagawa'
 	end
 
-	themes['Default'] = vim.g.DEFAULT_THEME
+	if vim.g.COLOR_MODE == nil then
+		print("Default color mode set to dark")
+		vim.g.COLOR_MODE = 'dark'
+	end
 
 	-- Set theme on nvim start
-	local scheme = themes['Default'][1]
-	local bg = themes['Default'][2]
+	local scheme = vim.g.DEFAULT_THEME
+	local bg = vim.g.COLOR_MODE
 	local ft = get_filetype()
 
 	if file_themes[ft] ~= nil then
-		scheme = file_themes[ft][1]
-		bg = file_themes[ft][2]
+		scheme = file_themes[ft]
+		bg = file_themes[ft][vim.g.COLOR_MODE] or vim.g.COLOR_MODE
 	end
 
 	opt.termguicolors = true
-	cmd.colorscheme(scheme)
+	cmd.colorscheme(scheme:lower())
 	opt.background = bg
-	background = bg
 
 	-- Add autocmd to update theme on filetype changed
 	api.nvim_create_autocmd({ 'FileType', 'BufWinEnter', 'BufEnter' }, {
@@ -105,27 +119,53 @@ local function init()
 	-- User commands to change theme manually
 	for name, _ in pairs(themes) do
 		api.nvim_create_user_command(name, function()
-			set_theme(themes[name])
+			set_theme(name)
 		end, {})
 	end
 
 	-- User command to set the default theme
-	api.nvim_create_user_command('SetDefaultTheme', function(opts)
-		set_default(opts.fargs[1])
-	end, {
-		nargs = 1,
-		complete = function(arglead, _, _)
-			local potential_args = {}
-
-			for k, _ in pairs(themes) do
-				if (#k >= #arglead and string.lower(string.sub(k, 1, #arglead)) == string.lower(arglead)) then
-					potential_args[#potential_args + 1] = k
-				end
-			end
-
-			return potential_args
+	api.nvim_create_user_command(
+		'SetDefaultTheme',
+		function(opts)
+			set_default_theme(opts.fargs[1])
 		end,
-	})
+		{
+			nargs = 1,
+			complete = function(arglead, _, _)
+				local potential_args = {}
+
+				for k, _ in pairs(themes) do
+					if #k >= #arglead and string.lower(string.sub(k, 1, #arglead)) == string.lower(arglead) then
+						potential_args[#potential_args + 1] = k
+					end
+				end
+
+				return potential_args
+			end,
+		}
+	)
+
+	-- User command to set the color mode
+	api.nvim_create_user_command(
+		'SetColorMode',
+		function(opts)
+			set_color_mode(opts.fargs[1])
+		end,
+		{
+			nargs = 1,
+			complete = function(arglead, _, _)
+				local potential_args = {}
+
+				for _, m in pairs(modes) do
+					if #m >= #arglead and string.lower(string.sub(m, 1, #arglead)) == string.lower(arglead) then
+						potential_args[#potential_args + 1] = m
+					end
+				end
+
+				return potential_args
+			end,
+		}
+	)
 end
 
 -- Call init only when shada files are loaded
