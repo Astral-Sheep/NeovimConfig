@@ -24,7 +24,9 @@ local file_themes = {
 	tpp = 'Gruvbox',
 	cmake = 'Gruvbox',
 	cs = 'Onedark',
-	rust = 'Onedark',
+	rust = 'Nord',
+	lua = 'Kanagawa',
+	py = 'Kanagawa'
 }
 
 -- Return the filetype of the current buffer
@@ -77,16 +79,26 @@ local function update_theme()
 end
 
 local function set_default_theme(name)
+	if name == vim.g.DEFAULT_THEME then
+		return
+	end
+
 	local last = vim.g.DEFAULT_THEME
 	vim.g.DEFAULT_THEME = name or vim.g.DEFAULT_THEME
 
-	if last ~= vim.g.DEFAULT_THEME then
-		print("Default theme set to " .. name)
+	if last == vim.g.DEFAULT_THEME then
+		return
 	end
+
+	if (themes[vim.g.DEFAULT_THEME] == nil) then
+		set_theme(vim.g.DEFAULT_THEME)
+	end
+
+	print("Default theme set to " .. name)
 end
 
 local function init()
-	if vim.g.DEFAULT_THEME == nil or vim.g.DEFAULT_THEME.empty then
+	if vim.g.DEFAULT_THEME == nil then
 		print("Default theme set to Kanagawa")
 		vim.g.DEFAULT_THEME = 'Kanagawa'
 	end

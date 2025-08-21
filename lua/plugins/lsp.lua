@@ -176,6 +176,6 @@ return {
 
 		--- Lazy loading ---
 		lazy = true,
-		ft = { 'bat', 'c', 'cpp', 'cs', 'cmake', 'glsl', 'json', 'lua', 'ps1', 'py', 'rs', 'ts', 'vim', 'yaml' }
+		ft = { 'dosbatch', 'c', 'cpp', 'tpp', 'cs', 'cmake', 'glsl', 'javascript', 'json', 'lua', 'ps1', 'python', 'rust', 'typescript', 'vim', 'yaml' }
 	},
 }
