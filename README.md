@@ -2,7 +2,7 @@
 
 ## Made for:
 
-OS: Windows 10
+OS: Windows 10 & 11
 
 Neovim version: 0.9.5
 
