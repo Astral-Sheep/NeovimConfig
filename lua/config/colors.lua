@@ -10,7 +10,10 @@ local themes = {
 	Gruvbox = {},
 	Onedark = {},
 	Nord = {},
-	Catppuccin = {},
+	Catppuccin = {
+		dark = 'macchiato',
+		light = 'latte',
+	},
 	Mellifluous = {},
 	Miasma = {},
 	Neofusion = {},
@@ -24,10 +27,13 @@ local file_themes = {
 	tpp = 'Gruvbox',
 	cmake = 'Gruvbox',
 	cs = 'Onedark',
-	rust = 'Nord',
+	rust = 'Catppuccin',
 	lua = 'Kanagawa',
-	py = 'Kanagawa'
+	python = 'Kanagawa'
 }
+file_themes['cpp'] = file_themes['c'];
+file_themes['tpp'] = file_themes['c'];
+file_themes['toml'] = file_themes['rust'];
 
 -- Return the filetype of the current buffer
 local function get_filetype()
