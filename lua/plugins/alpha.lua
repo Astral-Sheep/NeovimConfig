@@ -96,10 +96,10 @@ return {
 		dashboard.section.buttons.val = {
 			-- text("  v" .. v.major .. "." .. v.minor .. "." .. v.patch, 'SpecialComment', 'center'),
 			dashboard.button('e', "  Empty file", ':ene <BAR> startinsert<CR>'),
-			dashboard.button('s l', "  Last session", ":SessionRestore<CR>"),
-			dashboard.button('f f', "  Find file", ':Telescope find_files<CR>'),
+			dashboard.button('s l', "  Last session", ':AutoSession restore<CR>'),
+			dashboard.button('f f', "  Find file", ':lua FzfLua.files()<CR>'),
 			dashboard.button('f e', "  File explorer", ':NvimTreeOpen<CR>'),
-			dashboard.button('f w', "󰈭  Find word", ':Telescope live_grep<CR>'),
+			dashboard.button('f w', "󰈭  Find word", ':lua FzfLua.live_grep()<CR>'),
 			dashboard.button('c', "  Configuration", ':cd ' .. vim.fn.stdpath("config") .. '<CR>'),
 			dashboard.button('q', "󰅚  Quit", ':qa<CR>'),
 		}

@@ -41,6 +41,7 @@ return {
 		--- Setup ---
 		opts = {
 			ensure_installed = servers,
+			automatic_enable = true,
 		},
 
 		--- Lazy Loading ---
@@ -74,7 +75,7 @@ return {
 					desc = "Display code actions",
 				})
 
-				map.set('n', 'gd', lsp.buf.definition, {
+				map.set('n', 'gd', lsp.buf.type_definition, {
 					silent = true,
 					desc = "Go to symbol definition",
 				})
@@ -82,11 +83,11 @@ return {
 					silent = true,
 					desc = "Go to symbol implementation",
 				})
-				map.set('n', 'gr', require('telescope.builtin').lsp_references, {
+				map.set('n', 'gr', require('fzf-lua').lsp_references, {
 					silent = true,
 					desc = "Display symbols references in folder",
 				})
-				map.set('n', 'gh', lsp.buf.hover, {
+				map.set('n', 'gh', lsp.buf.signature_help, {
 					silent = true,
 					desc = "Display symbol info",
 				})
@@ -160,16 +161,14 @@ return {
 							}
 						}
 					}
-				}
+				},
 			}
 
-			local lsp_config = require('lspconfig')
+			vim.lsp.config('*', configs['default'])
 
 			for _, lsp in pairs(servers) do
 				if configs[lsp] ~= nil then
-					lsp_config[lsp].setup(configs[lsp])
-				else
-					lsp_config[lsp].setup(configs['default'])
+					vim.lsp.config[lsp] = configs[lsp]
 				end
 			end
 		end,

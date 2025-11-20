@@ -1,3 +1,7 @@
+local function get_time()
+	return vim.fn.strftime("%H:%M")
+end
+
 return {
 	--- Source ---
 	'nvim-lualine/lualine.nvim',
@@ -72,6 +76,7 @@ return {
 				},
 			},
 			lualine_z = {
+				{ "os.date('%H:%M')" },
 				'location',
 				'progress',
 			},

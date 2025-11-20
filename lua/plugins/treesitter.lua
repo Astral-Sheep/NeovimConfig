@@ -1,47 +1,49 @@
+local parsers = {
+	-- 'arduino',
+	-- 'asm',
+	'bash',
+	'c',
+	'c_sharp',
+	'cmake',
+	'cpp',
+	-- 'css',
+	-- 'gdscript',
+	'gitattributes',
+	'gitignore',
+	'glsl',
+	'hlsl',
+	-- 'html',
+	-- 'java',
+	-- 'javascript',
+	'json',
+	'lua',
+	'markdown',
+	'powershell',
+	'python',
+	'rust',
+	-- 'typescript',
+	'vim',
+	'vimdoc',
+	'yaml',
+}
+
 return {
 	--- Source ---
 	'nvim-treesitter/nvim-treesitter',
 
 	--- Setup ---
 	opts = {
-		-- A list of parser names, or "all"
-		ensure_installed = {
-			-- 'arduino',
-			'bash',
-			'c',
-			'c_sharp',
-			'cmake',
-			'cpp',
-			-- 'css',
-			-- 'gdscript',
-			'gitattributes',
-			'glsl',
-			'hlsl',
-			-- 'html',
-			-- 'java',
-			-- 'javascript',
-			'json',
-			'lua',
-			'markdown',
-			'python',
-			'rust',
-			-- 'typescript',
-			'vim',
-			'vimdoc',
-			'yaml',
-		},
-		-- Install parsers synchronously (only applied to 'ensure_installed')
-		sync_install = false,
-		-- Automatically install missing parsers when entering buffer
-		-- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-		auto_install = true,
-		highlight = {
-			enable = true,
-			additional_vim_regex_highlighting = false,
-		},
+		install_dir = vim.fn.stdpath('data') .. '/site'
 	},
 	config = function(_, opts)
-		require('nvim-treesitter.configs').setup(opts)
+		local treesitter = require('nvim-treesitter')
+		treesitter.setup(opts)
+
+		local installed_parsers = treesitter.get_installed()
+		local uninstalled_parsers = vim.iter(parsers)
+			:filter(function(parser) return not vim.tbl_contains(installed_parsers, parser) end)
+			:totable()
+		treesitter.install(uninstalled_parsers)
 
 		local function refresh_treesitter()
 			local api = vim.api
@@ -65,16 +67,26 @@ return {
 			end
 		end
 
+		-- Update colors when color scheme changes
 		vim.api.nvim_create_autocmd('ColorScheme', {
 			nested = true,
 			callback = refresh_treesitter,
 		})
 
 		refresh_treesitter()
-		vim.cmd(':TSUpdate')
-	end,
 
-	--- Lazy Loading ---
-	lazy = true,
-	event = 'BufRead',
+		vim.api.nvim_create_autocmd(
+			'FileType',
+			{
+				pattern = parsers,
+				callback = function()
+					vim.treesitter.start()
+				end
+			}
+		)
+	end,
+	build = ':TSUpdate',
+
+	--- Versioning ---
+	branch = 'main'
 }

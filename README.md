@@ -2,9 +2,9 @@
 
 ## Made for:
 
-OS: Windows 10 & 11
+OS: Windows 11
 
-Neovim version: 0.9.5
+Neovim version: v0.11.5
 
 ## Default path to install on windows:
 

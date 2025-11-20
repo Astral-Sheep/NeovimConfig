@@ -54,7 +54,7 @@ return {
 			variables = true,
 			advanced = {
 				workspace = {
-					rootmarkers = { '.git', '*.sln', 'MakeFile', '*.godot', '*.uproject' },
+					root_markers = { '.git', '*.sln', 'MakeFile', '*.godot', '*.uproject' },
 					limit_to_cwd = false,
 				},
 			},
