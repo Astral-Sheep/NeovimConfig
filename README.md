@@ -1,5 +1,9 @@
 # NEOVIM CONFIGURATION
 
+## ⚠️Warning⚠️
+
+This configuration is unmaintained. Only the master branch is updated. It doesn't seem to have any bug, but it can have incompatibilities with newer versions of some plugins so be careful when using it.
+
 ## Made for:
 
 OS: Windows 10 & 11
@@ -195,3 +199,4 @@ Normal mode:
 `:Catppuccin` -> Set theme to Catppuccin
 
 `:SetDefaultTheme {theme}` -> Set default theme
+
