@@ -5,12 +5,12 @@ local servers = {
 	'clangd',                   -- C/C++
 	'cmake',                    -- CMake
 	'csharp_ls',                -- C#
-	-- 'cssls',                    -- CSS
+	'cssls',                    -- CSS
 	-- 'gdscript',                 -- GDScript
 	-- 'gdshader_lsp',             -- GDSL
 	'glsl_analyzer',            -- GLSL
 	-- 'haxe_language_server',     -- Haxe
-	-- 'html',                     -- HTML
+	'html',                     -- HTML
 	-- 'java_language_server',     -- Java
 	'jsonls',                   -- JSON
 	-- 'kotlin_language_server',   -- Kotlin
@@ -169,12 +169,15 @@ return {
 			for _, lsp in pairs(servers) do
 				if configs[lsp] ~= nil then
 					vim.lsp.config[lsp] = configs[lsp]
+					vim.lsp.enable(lsp)
 				end
 			end
+
+			vim.highlight.priorities.semantic_tokens = 95
 		end,
 
 		--- Lazy loading ---
 		lazy = true,
-		ft = { 'dosbatch', 'c', 'cpp', 'tpp', 'cs', 'cmake', 'glsl', 'javascript', 'json', 'lua', 'ps1', 'python', 'rust', 'typescript', 'vim', 'yaml' }
+		ft = { 'dosbatch', 'c', 'cpp', 'tpp', 'cs', 'css', 'cmake', 'glsl', 'html', 'javascript', 'json', 'lua', 'ps1', 'python', 'rust', 'typescript', 'vim', 'yaml' }
 	},
 }
