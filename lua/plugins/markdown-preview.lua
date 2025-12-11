@@ -3,7 +3,7 @@ return {
 	'iamcco/markdown-preview.nvim',
 
 	--- Setup ---
-	config = function()
+	config = function(_, opts)
 		local g = vim.g
 
 		-- Set to 1, nvim will open the preview window after entering the Markdown buffer

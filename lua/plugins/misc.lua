@@ -50,7 +50,7 @@ return {
 		'famiu/bufdelete.nvim',
 
 		--- Setup ---
-		config = function()
+		config = function(_, opts)
 			vim.keymap.set('n', '<C-F4>', ':Bdelete<CR>', {
 				silent = true,
 				desc = "Close active buffer if there is one",

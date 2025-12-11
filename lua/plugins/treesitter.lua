@@ -6,15 +6,15 @@ local parsers = {
 	'c_sharp',
 	'cmake',
 	'cpp',
-	-- 'css',
+	'css',
 	-- 'gdscript',
 	'gitattributes',
 	'gitignore',
 	'glsl',
 	'hlsl',
-	-- 'html',
+	'html',
 	-- 'java',
-	-- 'javascript',
+	'javascript',
 	'json',
 	'lua',
 	'markdown',
@@ -43,6 +43,7 @@ return {
 		local uninstalled_parsers = vim.iter(parsers)
 			:filter(function(parser) return not vim.tbl_contains(installed_parsers, parser) end)
 			:totable()
+
 		treesitter.install(uninstalled_parsers)
 
 		local function refresh_treesitter()

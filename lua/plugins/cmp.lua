@@ -12,7 +12,7 @@ return {
 	},
 
 	--- Setup ---
-	config = function()
+	config = function(_, opts)
 		local cmp = require('cmp')
 		cmp.setup({
 			snippet = {

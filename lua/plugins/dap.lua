@@ -9,8 +9,10 @@ return {
 	},
 
 	--- Setup ---
-	config = function()
+	config = function(_, opts)
 		local dap = require('dap')
+		dap.setup(opts)
+
 		local fn = vim.fn
 
 		-- Adapaters

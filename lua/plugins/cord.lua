@@ -3,7 +3,7 @@ return {
 	'vyfor/cord.nvim',
 
 	--- Setup ---
-	opts = function()
+	opts = function(_, opts)
 		return {
 			-- editor = {
 			-- 	client = 'neovim',

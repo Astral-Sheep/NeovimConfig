@@ -3,7 +3,7 @@ return {
 	'nvim-tree/nvim-tree.lua',
 
 	--- Setup ---
-	config = function()
+	config = function(_, opts)
 		vim.g.loaded_netrw = 1
 		vim.g.loaded_netrwPlugin = 1
 

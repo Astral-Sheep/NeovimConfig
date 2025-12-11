@@ -26,7 +26,7 @@ return {
 	'Astral-Sheep/alpha-nvim',
 
 	--- Setup ---
-	config = function()
+	config = function(_, opts)
 		local dashboard = require('alpha.themes.dashboard')
 		dashboard.set_width(WIDTH)
 		local v = vim.version()

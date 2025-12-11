@@ -59,47 +59,47 @@ return {
 		},
 
 		--- Setup ---
-		config = function()
+		config = function(_, opts)
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-			local on_attach = function(_, _)
-				local map = vim.keymap
-				local lsp = vim.lsp
+			vim.api.nvim_create_autocmd('LspAttach', {
+				callback = function(_, _)
+					local map = vim.keymap
+					local lsp = vim.lsp
 
-				map.set('n', '<C-r><C-r>', lsp.buf.rename, {
-					silent = true,
-					desc = "Rename symbol under cursor",
-				})
-				map.set('n', '<leader>ca', lsp.buf.code_action, {
-					silent = true,
-					desc = "Display code actions",
-				})
+					map.set('n', '<C-r><C-r>', lsp.buf.rename, {
+						silent = true,
+						desc = "Rename symbol under cursor",
+					})
+					map.set('n', '<leader>ca', lsp.buf.code_action, {
+						silent = true,
+						desc = "Display code actions",
+					})
 
-				map.set('n', 'gd', lsp.buf.type_definition, {
-					silent = true,
-					desc = "Go to symbol definition",
-				})
-				map.set('n', 'gi', lsp.buf.implementation, {
-					silent = true,
-					desc = "Go to symbol implementation",
-				})
-				map.set('n', 'gr', require('fzf-lua').lsp_references, {
-					silent = true,
-					desc = "Display symbols references in folder",
-				})
-				map.set('n', 'gh', lsp.buf.signature_help, {
-					silent = true,
-					desc = "Display symbol info",
-				})
-			end
+					map.set('n', 'gd', lsp.buf.type_definition, {
+						silent = true,
+						desc = "Go to symbol definition",
+					})
+					map.set('n', 'gi', lsp.buf.implementation, {
+						silent = true,
+						desc = "Go to symbol implementation",
+					})
+					map.set('n', 'gr', require('fzf-lua').lsp_references, {
+						silent = true,
+						desc = "Display symbols references in folder",
+					})
+					map.set('n', 'gh', lsp.buf.signature_help, {
+						silent = true,
+						desc = "Display symbol info",
+					})
+				end
+			})
 
 			local configs = {
 				default = {
-					on_attach = on_attach,
 					capabilities = capabilities,
 				},
 				lua_ls = {
-					on_attach = on_attach,
 					capabilities = capabilities,
 					settings = {
 						Lua = {
