@@ -1,4 +1,1 @@
-require('config.settings')
-require('config.keymaps')
-require('config.lazy')
-require('config.colors')
+require('core').setup()
