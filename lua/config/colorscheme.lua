@@ -1,8 +1,6 @@
 ---@type ColorschemeTable
 return {
 	kanagawa = {
-		dark = 'wave',
-		light = 'lotus',
 		lazyopts = {
 			--- Source ---
 			'rebelot/kanagawa.nvim',
@@ -78,8 +76,6 @@ return {
 		}
 	},
 	catppuccin = {
-		dark = 'macchiato',
-		light = 'latte',
 		lazyopts = {
 			--- Source ---
 			'catppuccin/nvim',

@@ -26,14 +26,7 @@ local function set_color_mode(mode)
 end
 
 local function refresh_color_mode()
-	local current_mode = (vim.g.COLOR_MODE ~= 'auto' and vim.g.COLOR_MODE) or get_system_theme()
-	-- For some reason I need to use the underlying value of background,
-	-- otherwise a type mismatch error is thrown
-	if colorschemes[vim.g.colors_name] ~= nil and colorschemes[vim.g.colors_name][current_mode] ~= nil then
-		vim.opt.background = colorschemes[vim.g.colors_name][current_mode]
-	else
-		vim.opt.background = current_mode
-	end
+	vim.opt.background = (vim.g.COLOR_MODE ~= 'auto' and vim.g.COLOR_MODE) or get_system_theme()
 end
 
 ---@param colorscheme string
@@ -42,10 +35,13 @@ local function set_colorscheme(colorscheme)
 		return
 	end
 
-	colorscheme = require(colorscheme) and colorscheme or 'default'
-
 	vim.cmd('hi clear')
-	vim.cmd.colorscheme(colorscheme)
+
+	local ok, _ = pcall(vim.cmd.colorscheme, colorscheme)
+
+	if not ok then
+		vim.cmd.colorscheme('default')
+	end
 
 	refresh_color_mode()
 end
@@ -114,21 +110,18 @@ function M.init()
 	end
 
 	-- Set theme on nvim start
-	local current_color_mode = vim.g.COLOR_MODE ~= 'auto' and vim.g.COLOR_MODE or get_system_theme()
 	local scheme = vim.g.DEFAULT_THEME
-	local bg = current_color_mode
 	local ft = Config.utils.get_filetype()
 
 	if colorscheme_defaults.per_filetype and colorscheme_defaults.file_schemes[ft] ~= nil then
 		scheme = colorscheme_defaults.file_schemes[ft]
-		bg = colorschemes[scheme][current_color_mode] or bg
 	end
 
 	vim.opt.termguicolors = true
 	vim.cmd.colorscheme(scheme)
 	-- For some reason I need to use the underlying value of background,
 	-- otherwise a type mismatch error is thrown
-	vim.opt.background = bg
+	vim.opt.background = (vim.g.COLOR_MODE ~= 'auto' and vim.g.COLOR_MODE) or get_system_theme()
 
 	M.create_commands()
 end

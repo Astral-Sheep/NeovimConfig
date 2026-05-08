@@ -9,4 +9,4 @@
 ---@field dark? string
 ---@field light? string
 
----@alias ColorschemeTable table<string, { dark?: string, light?: string, lazyopts: table, theme_overrides?: table<string, table> }>
+---@alias ColorschemeTable table<string, { lazyopts: table, theme_overrides?: table<string, table> }>
