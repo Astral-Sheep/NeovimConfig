@@ -267,8 +267,30 @@ return {
 		--- Setup ---
 		opts = {
 			ensure_installed = {
-				'stylua',
-				'shfmt',
+				'asm-lsp', -- NASM/GAS/GO Assembly
+				'bash-language-server', -- Bash
+				'clangd', -- C/C++
+				-- 'cmake-language-server', -- CMake
+				-- 'csharp-language-server', -- C#
+				'css-lsp', -- CSS
+				'glsl_analyzer', -- GLSL
+				'gradle-language-server', -- Gradle
+				'html-lsp', -- HTML
+				'hyprls', -- Hypr
+				'java-language-server', -- Java
+				'json-lsp', -- JSON
+				'lua-language-server', -- Lua
+				'marksman', -- Markdown
+				'neocmakelsp', -- CMake
+				'omnisharp', -- C#
+				'powershell-editor-services', -- Powershell
+				'python-lsp-server', -- Python
+				'rust-analyzer', -- Rust
+				'typescript-language-server', -- Typescript/Javascript
+				'vim-language-server', -- VimScript
+				-- 'wasm-language-tools', -- WebAssembly
+				-- 'wgsl-analyzer', -- WGSL
+				'yaml-language-server', -- YAML
 			},
 		},
 		opts_extend = { "ensure_installed" },

@@ -3,6 +3,9 @@
 ---@field colorschemes core.colorscheme
 ---@field cmp core.cmp
 ---@field lsp core.lsp
+---@field options table
+---@field pick core.pick
+---@field root core.root
 ---@field treesitter core.treesitter
 ---@field utils core.utils
 local M = {
@@ -10,6 +13,9 @@ local M = {
 	colorschemes = require('core.colorscheme'),
 	cmp = require('core.cmp'),
 	lsp = require('core.lsp'),
+	options = {},
+	pick = require('core.pick'),
+	root = require('core.root'),
 	treesitter = require('core.treesitter'),
 	utils = require('core.utils'),
 }
@@ -158,20 +164,21 @@ local function load_options(opts)
 	end
 
 	for cat, tab in pairs(options) do
-		if type(tab) ~= 'table' then
-			M.utils.error(cat .. " option category is not a table. Ignoring category")
-			goto continue
-		end
-
-		for opt, val in pairs(tab) do
-			if type(val) == 'function' then
-				val(vim[cat])
+		if vim[cat] ~= nil and type(tab) == 'table' then
+			if type(tab) == 'table' then
+				for opt, val in pairs(tab) do
+					if type(val) == 'function' then
+						val(vim[cat])
+					else
+						vim[cat][opt] = val
+					end
+				end
 			else
-				vim[cat][opt] = val
+				vim[cat] = tab
 			end
+		else
+			M.options[cat] = tab
 		end
-
-		::continue::
 	end
 end
 

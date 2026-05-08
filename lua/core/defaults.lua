@@ -12,14 +12,14 @@ return {
 	colorschemes = {
 		per_filetype = false,
 		file_schemes = {
-			default = 'kanagawa',
+			default = 'tokyonight',
 			c = 'gruvbox',
 			cpp = 'gruvbox',
 			tpp = 'gruvbox',
 			cmake = 'gruvbox',
-			lua = 'kanagawa',
+			lua = 'tokyonight',
 			rust = 'catppuccin',
-		}
+		},
 	},
 	defaults = {
 		autocmds = true, -- config.autocmds
@@ -67,16 +67,10 @@ return {
 			hint = " ",
 			info = " ",
 		},
-		misc = {
-			indent_blankline = "▏",
-			dots = "󰇘",
-		},
-		notifications = {
-			debug = " ",
-			error = " ",
-			info = " ",
-			trace = " ",
-			warn = " ",
+		ft = {
+			octo = " ",
+			gh = " ",
+			['markdown.gh'] = " ",
 		},
 		git = {
 			added    = " ",
@@ -124,6 +118,17 @@ return {
 			Unit          = " ",
 			Value         = " ",
 			Variable      = "󰀫 ",
+		},
+		misc = {
+			indent_blankline = "▏",
+			dots = "󰇘",
+		},
+		notifications = {
+			debug = " ",
+			error = " ",
+			info = " ",
+			trace = " ",
+			warn = " ",
 		},
 	},
 	kind_filter = {

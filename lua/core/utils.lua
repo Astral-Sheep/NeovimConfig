@@ -3,6 +3,11 @@ local M = {}
 
 -- Functions from lazy.core.util
 
+---@return boolean
+function M.is_win()
+	return vim.uv.os_uname().sysname:find("Windows") ~= nil
+end
+
 ---@param opts? { level?: number }
 function M.pretty_trace(opts)
 	opts = opts or {}
@@ -242,6 +247,22 @@ end
 ---@param str string
 function M.capitalize(str)
 	return str ~= nil and #str > 0 and string.upper(string.sub(str, 1, 1)) .. string.sub(str, 2) or ""
+end
+
+---@return string
+function M.norm(path)
+	if path:sub(1, 1) == "~" then
+		local home = vim.uv.os_homedir() or ""
+
+		if home:sub(-1) == "\\" or home:sub(-1) == "/" then
+			home = home:sub(1, -2)
+		end
+
+		path = home .. path:sub(2)
+	end
+
+	path = path:gsub("\\", "/"):gsub("/+", "/")
+	return path:sub(-1) == "/" and path:sub(1, -2) or path
 end
 
 return M

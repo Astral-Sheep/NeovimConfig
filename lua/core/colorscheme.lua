@@ -51,6 +51,7 @@ local function set_colorscheme(colorscheme)
 end
 
 local function update_colorscheme()
+	---@type string?
 	local ft = Config.utils.get_filetype()
 
 	if ft == nil or ft == "" then

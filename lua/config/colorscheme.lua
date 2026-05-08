@@ -132,4 +132,13 @@ return {
 			lazy = true,
 		},
 	},
+	tokyonight = {
+		lazyopts = {
+			--- Source ---
+			'folke/tokyonight.nvim',
+
+			--- Setup ---
+			lazy = true,
+		},
+	},
 }

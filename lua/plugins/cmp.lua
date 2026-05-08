@@ -3,6 +3,9 @@ return {
 		--- Source ---
 		'saghen/blink.cmp',
 
+		--- Lazy loading ---
+		event = 'InsertEnter',
+
 		--- Versioning ---
 		version = "1.*",
 	},
@@ -19,7 +22,7 @@ return {
 			'hrsh7th/cmp-path',
 		},
 
-		--- Setup ---
+ 		--- Setup ---
 		opts = function()
 			vim.lsp.config("*", { capabilities = require('cmp_nvim_lsp').default_capabilities() })
 

@@ -38,7 +38,7 @@ require('lazy').setup({
 		-- Install missing plugins on startup. This doesn't increase startup time
 		missing = true,
 		-- Try to load one of these colorschemes when starting an installation during startup
-		colorscheme = { 'kanagawa', 'catppuccin' }
+		colorscheme = { 'tokyonight' }
 	},
 	checker = {
 		enabled = true, -- Check for plugin updates periodically
@@ -46,7 +46,7 @@ require('lazy').setup({
 		frequency = 604800 -- Check for updates every week
 	}, -- Automatically check for plugin updates
 	change_detection = {
-		enabled = false, -- Automatically check for config file changes and reload the ui
+		enabled = true, -- Automatically check for config file changes and reload the ui
 		notify = true, -- Get a notification when changes are found
 	},
 	performance = {
