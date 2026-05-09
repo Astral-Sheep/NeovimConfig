@@ -7,6 +7,14 @@ end)
 return {
 	{
 		--- Source ---
+		'nvim-treesitter/nvim-treesitter',
+
+		--- Setup ---
+		opts = { ensure_installed = { 'markdown', 'markdown_inline' } },
+	},
+
+	{
+		--- Source ---
 		'mason-org/mason.nvim',
 
 		--- Setup ---

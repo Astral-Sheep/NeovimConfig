@@ -243,7 +243,6 @@ return {
 				'html-lsp', -- HTML
 				'hyprls', -- Hypr
 				'java-language-server', -- Java
-				'json-lsp', -- JSON
 				'powershell-editor-services', -- Powershell
 				'python-lsp-server', -- Python
 				'typescript-language-server', -- Typescript/Javascript
