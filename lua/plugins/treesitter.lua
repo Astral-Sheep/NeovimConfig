@@ -21,8 +21,6 @@ return {
 				'cpp',
 				'css',
 				'diff',
-				'gitattributes',
-				'gitignore',
 				'glsl',
 				'hlsl',
 				'html',

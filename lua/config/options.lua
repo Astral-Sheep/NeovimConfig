@@ -28,7 +28,7 @@ return {
 		hidden = true,                 -- Required to keep multiple buffers open
 		laststatus = 2,                -- Always display the status line
 		linebreak = true,              -- Wrap lines at convenient points
-		list = true,                   -- Show some invisible characters (tabs...)
+		list = false,                  -- Show some invisible characters (tabs...)
 		mouse = 'a',                   -- Enable mouse mode
 		mousehide = true,              -- Hide the mouse when writting
 		mousemodel = 'extend',         -- Allow right click to extend a selection
