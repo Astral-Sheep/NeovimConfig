@@ -269,9 +269,7 @@ return {
 			ensure_installed = {
 				'asm-lsp', -- NASM/GAS/GO Assembly
 				'bash-language-server', -- Bash
-				'clangd', -- C/C++
-				-- 'cmake-language-server', -- CMake
-				-- 'csharp-language-server', -- C#
+				-- 'clangd', -- C/C++
 				'css-lsp', -- CSS
 				'glsl_analyzer', -- GLSL
 				'gradle-language-server', -- Gradle
