@@ -71,10 +71,8 @@ local function set_default_colorscheme(colorscheme)
 		return
 	end
 
-	local colorscheme_defaults = Config.defaults.colorschemes
-
 	-- Apply new default colorscheme if per filetype colorscheme is enabled and the last default colorscheme was in use
-	if colorscheme_defaults.per_filetype and colorscheme_defaults.file_schemes[Config.utils.get_filetype()] == nil then
+	if Config.options.change_colorscheme_per_filetype and Config.defaults.colorschemes.file_schemes[Config.utils.get_filetype()] == nil then
 		set_colorscheme(vim.g.DEFAULT_THEME)
 	end
 
@@ -113,7 +111,7 @@ function M.init()
 	local scheme = vim.g.DEFAULT_THEME
 	local ft = Config.utils.get_filetype()
 
-	if colorscheme_defaults.per_filetype and colorscheme_defaults.file_schemes[ft] ~= nil then
+	if Config.options.change_colorscheme_per_filetype and colorscheme_defaults.file_schemes[ft] ~= nil then
 		scheme = colorscheme_defaults.file_schemes[ft]
 	end
 
@@ -127,9 +125,7 @@ function M.init()
 end
 
 function M.create_commands()
-	local colorscheme_defaults = Config.defaults.colorschemes
-
-	if colorscheme_defaults.per_filetype then
+	if Config.options.change_colorscheme_per_filetype then
 		-- Add autocmd to update theme on filetype changed
 		vim.api.nvim_create_autocmd({ 'FileType', 'BufWinEnter', 'BufEnter' }, {
 			nested = true,

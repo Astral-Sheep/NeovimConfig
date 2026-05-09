@@ -1,5 +1,4 @@
 ---@class ColorschemeOptions
----@field per_filetype boolean
 ---@field file_schemes table<string, string>
 
 ---@class ConfigDefaults
@@ -10,7 +9,6 @@
 ---@field kind_filter table
 return {
 	colorschemes = {
-		per_filetype = false,
 		file_schemes = {
 			default = 'tokyonight',
 			c = 'gruvbox',

@@ -60,4 +60,5 @@ return {
 		wrap = true,                   -- Enable line wrap
 	},
 	load_misc_plugins = true,
+	change_colorscheme_per_filetype = true,
 }
