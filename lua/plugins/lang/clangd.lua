@@ -43,7 +43,10 @@ return {
 	},
 
 	{
+		--- Source ---
 		'neovim/nvim-lspconfig',
+
+		--- Setup ---
 		opts = {
 			servers = {
 				clangd = {
