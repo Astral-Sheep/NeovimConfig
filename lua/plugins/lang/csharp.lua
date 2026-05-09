@@ -24,7 +24,10 @@ return {
 	},
 
 	{
+		--- Source ---
 		'neovim/nvim-lspconfig',
+
+		--- Setup ---
 		opts = {
 			servers = {
 				omnisharp = {
@@ -53,7 +56,10 @@ return {
 	},
 
 	{
+		--- Source ---
 		'mfussenegger/nvim-dap',
+
+		--- Setup ---
 		opts = function()
 			local dap = require('dap')
 

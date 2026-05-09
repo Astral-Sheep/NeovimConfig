@@ -73,6 +73,8 @@ return {
 
 			['@lsp.type.namespace'] = { link = 'PreProc' },
 			['@lsp.type.operator.cpp'] = { link = 'Normal' },
+
+			['Visual'] = {},
 		}
 	},
 	catppuccin = {

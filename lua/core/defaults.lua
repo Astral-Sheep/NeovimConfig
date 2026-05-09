@@ -5,10 +5,11 @@
 ---@field colorschemes ColorschemeOptions
 ---@field defaults table<string, boolean>
 ---@field news NewsOptions
----@field icons table<string, table<string, string|string[]>>
+---@field icons table<string, table>
 ---@field kind_filter table
 return {
 	colorschemes = {
+		---@type table<string, string>
 		file_schemes = {
 			default = 'tokyonight',
 			c = 'gruvbox',
@@ -19,11 +20,13 @@ return {
 			rust = 'catppuccin',
 		},
 	},
+	---@type table<string, boolean>
 	defaults = {
 		autocmds = true, -- config.autocmds
 		keymaps = true, -- config.keymaps
 		options = true, -- config.options
 	},
+	---@type table<string, boolean>
 	news = {
 		-- When enabled, NEWS.md will be shown when changed.
 		-- This only contains big new features and breaking changes.
@@ -32,6 +35,7 @@ return {
 		neovim = true,
 	},
 	icons = {
+		---@table<string, string>
 		comments = {
 			todo = " ",
 			fix = " ",
@@ -41,6 +45,7 @@ return {
 			note = "󰍩 ",
 			test = "󱤥 ",
 		},
+		---@table<string, string>
 		dashboard = {
 			configuration = " ",
 			file_explorer = " ",
@@ -52,6 +57,7 @@ return {
 			recent_files = " ",
 			restore_session = " ",
 		},
+		---@table<string, string|string[]>
 		dap = {
 			stopped = { "󰁕 ", "DiagnosticWarn", "DapStoppedLine" },
 			breakpoint = " ",
@@ -59,22 +65,26 @@ return {
 			breakpoint_rejected = { " ", "DiagnosticError" },
 			log_point = ".>",
 		},
+		---@table<string, string>
 		diagnostics = {
 			error = " ",
 			warn = " ",
 			hint = " ",
 			info = " ",
 		},
+		---@table<string, string>
 		ft = {
 			octo = " ",
 			gh = " ",
 			['markdown.gh'] = " ",
 		},
+		---@table<string, string>
 		git = {
 			added    = " ",
 			modified = " ",
 			removed  = " ",
 		},
+		---@table<string, string>
 		kinds = {
 			Array         = " ",
 			Boolean       = "󰨙 ",
@@ -117,10 +127,12 @@ return {
 			Value         = " ",
 			Variable      = "󰀫 ",
 		},
+		---@table<string, string>
 		misc = {
 			indent_blankline = "▏",
 			dots = "󰇘",
 		},
+		---@table<string, string>
 		notifications = {
 			debug = " ",
 			error = " ",
@@ -129,6 +141,7 @@ return {
 			warn = " ",
 		},
 	},
+	---@type table<string, string[]|boolean>
 	kind_filter = {
 		default = {
 			"Class",
