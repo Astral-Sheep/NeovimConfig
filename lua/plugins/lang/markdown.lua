@@ -10,7 +10,7 @@ return {
 		'mason-org/mason.nvim',
 
 		--- Setup ---
-		opts = { ensure_installed = { 'markdown-toc' } }
+		opts = { ensure_installed = { 'marksman', 'markdown-toc' } }
 	},
 
 	{

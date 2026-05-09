@@ -15,8 +15,6 @@ return {
 			highlight = { enable = true }, ---@type plugin.TSFeat
 			folds = { enable = false }, ---@type plugin.TSFeat
 			ensure_installed = {
-				'c_sharp',
-				'cmake',
 				'css',
 				'diff',
 				'glsl',

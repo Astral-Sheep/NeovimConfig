@@ -237,7 +237,6 @@ return {
 			ensure_installed = {
 				'asm-lsp', -- NASM/GAS/GO Assembly
 				'bash-language-server', -- Bash
-				-- 'clangd', -- C/C++
 				'css-lsp', -- CSS
 				'glsl_analyzer', -- GLSL
 				'gradle-language-server', -- Gradle
@@ -245,13 +244,8 @@ return {
 				'hyprls', -- Hypr
 				'java-language-server', -- Java
 				'json-lsp', -- JSON
-				-- 'lua-language-server', -- Lua
-				'marksman', -- Markdown
-				'neocmakelsp', -- CMake
-				'omnisharp', -- C#
 				'powershell-editor-services', -- Powershell
 				'python-lsp-server', -- Python
-				'rust-analyzer', -- Rust
 				'typescript-language-server', -- Typescript/Javascript
 				'vim-language-server', -- VimScript
 				-- 'wasm-language-tools', -- WebAssembly
