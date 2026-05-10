@@ -235,7 +235,6 @@ return {
 		--- Setup ---
 		opts = {
 			ensure_installed = {
-				'asm-lsp', -- NASM/GAS/GO Assembly
 				'bash-language-server', -- Bash
 				'css-lsp', -- CSS
 				'glsl_analyzer', -- GLSL

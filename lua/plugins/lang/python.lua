@@ -1,4 +1,3 @@
-local lsp = "pyright"
 local ruff = "ruff"
 
 return {
