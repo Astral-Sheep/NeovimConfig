@@ -22,8 +22,8 @@ This is my Neovim configuration powered by [LazyVim](https://github.com/folke/la
 
 Clone the repo in your nvim config folder (`~\AppData\Local\nvim` for Windows and `~/.config/nvim` for Linux).<br/>
 You can use this command in your terminal `git clone https://github.com/Astral-Sheep/NeovimConfig nvim` if you don't have a `nvim` folder in your config folder, or just `git clone https://github.com/Astral-Sheep/NeovimConfig .` if you're already in your `nvim` folder.<br/>
-
 If you already have a configuration in your nvim folder, back it up by renaming it with `ren nvim nvim.bak` on Windows and `mv nvim ./nvim.bak` on Linux.<br/>
+
 Once you've cloned the repo, start Neovim and let LazyVim install your plugins. You might have an error from `tiny-inline-diagnostics`, if so just restart Neovim. It's caused by `vim.diagnostic` doing funny things.
 
 If highlighting is going crazy, **use** `:TSInstall` **in Neovim** to install missing treesitter parsers.
