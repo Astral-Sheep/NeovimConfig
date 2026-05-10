@@ -2,7 +2,9 @@
 ---@field defaults ConfigDefaults
 ---@field colorschemes core.colorscheme
 ---@field cmp core.cmp
+---@field json core.json
 ---@field lsp core.lsp
+---@field news core.news
 ---@field options table
 ---@field pick core.pick
 ---@field root core.root
@@ -12,7 +14,9 @@ local M = {
 	defaults = require('core.defaults'),
 	colorschemes = require('core.colorscheme'),
 	cmp = require('core.cmp'),
+	json = require('core.json'),
 	lsp = require('core.lsp'),
+	news = require('core.news'),
 	options = {},
 	pick = require('core.pick'),
 	root = require('core.root'),
@@ -208,14 +212,24 @@ end
 function M.setup(opts)
 	load_options(opts)
 
+	-- Load remaining modules after everything else
+	vim.api.nvim_create_autocmd('User', {
+		group = vim.api.nvim_create_augroup("LazyVim", { clear = true }),
+		pattern = 'VeryLazy',
+		callback = function()
+			load('autocmds')
+			load_keymaps()
+
+			M.json.load()
+			Config.news.setup()
+			Config.root.setup()
+		end,
+	})
+
 	-- Initialize LazyVim
 	load('lazy')
 
 	M.colorschemes.init()
-	load_keymaps()
-
-	-- Create autocmds
-	load('autocmds')
 end
 
 _G.Config = M
