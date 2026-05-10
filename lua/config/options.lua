@@ -59,6 +59,13 @@ return {
 		winminwidth = 10,              -- Minimum window width
 		wrap = true,                   -- Enable line wrap
 	},
+ 	-- Specify here which language specific plugins are loaded
+	-- true or nil -> all languages are supported
+	-- false -> no language
+	-- { include = {} } -> only languages in this list are supported
+	-- { exclude = {} } -> all languages except the ones in this list are supported
+	---@type boolean | { include?: string|string[], exclude?: string|string[] } | nil
+	language_support = true,
 	load_misc_plugins = true,
 	change_colorscheme_per_filetype = true,
 }

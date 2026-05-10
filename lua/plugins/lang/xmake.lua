@@ -32,7 +32,7 @@ return {
 		config = true,
 
 		--- Lazy loading ---
-		event = 'BufReadPost',
+		event = { "BufRead xmake.lua" },
 
 		--- Versioning ---
 		version = '^3',

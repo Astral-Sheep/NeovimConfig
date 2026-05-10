@@ -239,7 +239,7 @@ end
 
 -- Custom functions
 
----@return string
+---@return string?
 function M.get_filetype()
 	return vim.filetype.match({ filename = vim.api.nvim_buf_get_name(0) })
 end

@@ -31,5 +31,5 @@ return {
 
 		--- Lazy loading ---
 		lazy = false,
-	}
+	},
 }
