@@ -1,35 +1,65 @@
-# NEOVIM CONFIGURATION
+This is my Neovim configuration powered by [LazyVim](https://github.com/folke/lazy.nvim) and heavily inspired (if not completely copied for some files) by the [LazyVim default configuration](https://github.com/LazyVim/LazyVim).
 
-## Made for:
+## Features
 
-OS: Windows 11
+- Auto-completion and diagnostics with [nvim-cmp](https://github.com/hrsh7th/nvim-cmp), [mason.nvim](https://github.com/mason-org/mason.nvim) and [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+- Syntax highlighting with [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) (currently archived but functional, might break in the future)
+- Fancy UI with [snacks.nvim](https://github.com/folke/snacks.nvim), [bufferline.nvim](https://github.com/akinsho/bufferline.nvim) and [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
+- Search features with [fzf-lua](https://github.com/ibhagwan/fzf-lua), [flash.nvim](https://github.com/folke/flash.nvim) and [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)
+- Debugging with [nvim-dap](https://github.com/mfussenegger/nvim-dap)
+- Git integration with [vim-signify](https://github.com/mhinz/vim-signify) and [Git UI](https://github.com/gitui-org/gitui)
+- Keymap cheatsheet with [which-key.nvim](https://github.com/folke/which-key.nvim)
 
-Neovim version: v0.12.2
+## Requirements
 
-## Default path to install on windows:
+- Neovim >= 0.12.0
+- Git >= 2.19.0 (for partial clones support)
+- [fzf](https://github.com/junegunn/fzf) > 0.36 for `fzf-lua`. See [here](https://github.com/ibhagwan/fzf-lua#dependencies)
+- a C compiler for `nvim-treesitter`. See [here](https://github.com/nvim-treesitter/nvim-treesitter#requirements)
+- a [Nerd Font](https://www.nerdfonts.com/) (optional)
 
-C:\Users\\{user}\AppData\Local\nvim
+## Install
 
-## Installation Guide:
+Clone the repo in your nvim config folder (`~\AppData\Local\nvim` for Windows and `~/.config/nvim` for Linux). You can use this command in your terminal `git clone https://github.com/Astral-Sheep/NeovimConfig nvim` if you don't have a `nvim` folder in your config folder, or just `git clone https://github.com/Astral-Sheep/NeovimConfig .` if you're already in your `nvim` folder
 
-Launch Neovim and let Lazy do its thing.
+If you already have a configuration in your nvim folder, back it up by renaming it with `ren nvim nvim.bak` on Windows and `mv nvim ./nvim.bak` on Linux
 
-If highlighting is going crazy, **use** `:TSInstall` **in Neovim**
+Once you've cloned the repo, start Neovim and let LazyVim install your plugins. You might have an error from `tiny-inline-diagnostics`, if so just restart Neovim. It's caused by `vim.diagnostic` doing funny things.
 
-It's now ready to use.
+If highlighting is going crazy, **use** `:TSInstall` **in Neovim** to install missing treesitter parsers.
 
-## Custom commands:
+## File Structure
 
-### Theme commands
+The files are split in 3 folders:
+- the `lua/core` folder containing utility functions, loaders, etc. You won't need to touch it if you just want to add some plugins, but you might need to if you want to modify deeper logic like how colorschemes are loaded or which defaults are used by this configuration.
+- the `lua/config` folder containing the main configuration options for Neovim like colorschemes and keymaps. You can change it as much as you want, it's here exactly for this purpose.
+- the `lua/plugins` folder containing all custom plugins, including the ones you'll add. All files there will be automatically loaded by LazyVim.
 
-`:Gruvbox` -> Set theme to Gruvbox
+<pre>
+    ~/AppData/Local/nvim
+    ├── lua
+    |   ├── config
+    |   |   ├── autocmds.lua
+    |   |   ├── colorscheme.lua
+    |   |   ├── keymaps.lua
+    |   |   ├── lazy.lua
+    |   |   └── options.lua
+    |   └── plugins
+    |       ├── lang
+    |       |   ├── language1.lua
+    |       |   ├── ...
+    |       |   └── language2.lua
+    |       ├── misc
+    |       |   ├── optional1.lua
+    |       |   ├── ...
+    |       |   └── optional2.lua
+    |       ├── init.lua
+    |       ├── lang.lua
+    |       ├── misc.lua
+    |       ├── plugin1.lua
+    |       ├── ...
+    |       └── plugin2.lua
+    └── init.lua
+</pre>
 
-`:Kanagawa` -> Set theme to Kanagawa
-
-`:Onedark` -> Set theme to Onedark
-
-`:Nord` -> Set theme to Nord
-
-`:Catppuccin` -> Set theme to Catppuccin
-
-`:SetDefaultTheme {theme}` -> Set default theme
+Refer to the [LazyVim documentation](https://lazy.folke.io/) for more info on how to setup your custom configuration.
