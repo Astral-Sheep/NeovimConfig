@@ -8,7 +8,7 @@ return {
 	},
 	{
 		--- Source ---
-		'neovim.nvim-lspconfig',
+		'neovim/nvim-lspconfig',
 
 		--- Setup ---
 		opts = {
