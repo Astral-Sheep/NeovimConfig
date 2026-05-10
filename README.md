@@ -20,10 +20,10 @@ This is my Neovim configuration powered by [LazyVim](https://github.com/folke/la
 
 ## Install
 
-Clone the repo in your nvim config folder (`~\AppData\Local\nvim` for Windows and `~/.config/nvim` for Linux). You can use this command in your terminal `git clone https://github.com/Astral-Sheep/NeovimConfig nvim` if you don't have a `nvim` folder in your config folder, or just `git clone https://github.com/Astral-Sheep/NeovimConfig .` if you're already in your `nvim` folder
+Clone the repo in your nvim config folder (`~\AppData\Local\nvim` for Windows and `~/.config/nvim` for Linux).<br/>
+You can use this command in your terminal `git clone https://github.com/Astral-Sheep/NeovimConfig nvim` if you don't have a `nvim` folder in your config folder, or just `git clone https://github.com/Astral-Sheep/NeovimConfig .` if you're already in your `nvim` folder.<br/>
 
-If you already have a configuration in your nvim folder, back it up by renaming it with `ren nvim nvim.bak` on Windows and `mv nvim ./nvim.bak` on Linux
-
+If you already have a configuration in your nvim folder, back it up by renaming it with `ren nvim nvim.bak` on Windows and `mv nvim ./nvim.bak` on Linux.<br/>
 Once you've cloned the repo, start Neovim and let LazyVim install your plugins. You might have an error from `tiny-inline-diagnostics`, if so just restart Neovim. It's caused by `vim.diagnostic` doing funny things.
 
 If highlighting is going crazy, **use** `:TSInstall` **in Neovim** to install missing treesitter parsers.
@@ -34,6 +34,8 @@ The files are split in 3 folders:
 - the `lua/core` folder containing utility functions, loaders, etc. You won't need to touch it if you just want to add some plugins, but you might need to if you want to modify deeper logic like how colorschemes are loaded or which defaults are used by this configuration.
 - the `lua/config` folder containing the main configuration options for Neovim like colorschemes and keymaps. You can change it as much as you want, it's here exactly for this purpose.
 - the `lua/plugins` folder containing all custom plugins, including the ones you'll add. All files there will be automatically loaded by LazyVim.
+    - the `lua/plugins/lang` folder contains all language related plugins like [clangd_extensions.nvim](https://github.com/p00f/clangd_extensions.nvim) for C/C++ or [render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim) for Markdown
+    - the `lua/plugins/misc` folder is a folder I use for plugins that don't meaningfully improve the experience in Neovim but that I like anyway. They can be disabled in `options.lua` by setting `load_misc_plugins` to `false`
 
 <pre>
     ~/AppData/Local/nvim
