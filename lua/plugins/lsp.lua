@@ -244,7 +244,6 @@ return {
 				'hyprls', -- Hypr
 				'java-language-server', -- Java
 				'powershell-editor-services', -- Powershell
-				'python-lsp-server', -- Python
 				'typescript-language-server', -- Typescript/Javascript
 				'vim-language-server', -- VimScript
 				-- 'wasm-language-tools', -- WebAssembly
