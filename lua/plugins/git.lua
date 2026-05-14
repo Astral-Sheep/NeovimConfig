@@ -43,9 +43,6 @@ return {
 		'mason-org/mason.nvim',
 
 		--- Setup ---
-		opts = { ensure_installed = { 'gitui' } },
-
-		--- Lazy loading ---
 		init = function()
 			-- Delete lazygit keymap for file history
 			vim.api.nvim_create_autocmd('User', {
@@ -57,6 +54,9 @@ return {
 				end,
 			})
 		end,
+		opts = { ensure_installed = { 'gitui' } },
+
+		--- Lazy loading ---
 		keys = {
 			{
 				'<leader>gG',

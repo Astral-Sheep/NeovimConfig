@@ -144,7 +144,7 @@ return {
 
 		--- Setup ---
 		config = function(_, opts)
-			require('tiny-inline-diagnostic').setup()
+			require('tiny-inline-diagnostic').setup(opts)
 			vim.diagnostic.config({ virtual_text = false }) -- Disable Neovim's default virtual text diagnostic
 		end,
 
